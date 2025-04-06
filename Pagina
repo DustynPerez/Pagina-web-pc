@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replica de Figma</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: grid;
+            grid-template-rows: auto 1fr;
+            height: 100vh;
+        }
+
+        .container {
+            display: grid;
+            grid-template-rows: auto 1fr;
+            grid-template-columns: 1fr;
+        }
+
+        .navbar {
+            background: #333;
+            color: rgb(145, 228, 255);
+            padding: 15px;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgb(138, 250, 230);
+            text-decoration: none;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .content {
+            display: grid;
+            grid-template-rows: auto 1fr;
+            padding: 20px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .box {
+            background: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Barra de navegación -->
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="#"><img src="home-icon.png" alt="Inicio">Inicio</a></li>
+                <li><a href="#"><img src="favorites-icon.png" alt="Favoritos">Favoritos</a></li>
+                <li><a href="#"><img src="cart-icon.png" alt="Carro de Compras">Carro de Compras</a></li>
+                <li><a href="#"><img src="messages-icon.png" alt="Correo/Mensajes">Correo/Mensajes</a></li>
+                <li><a href="#"><img src="profile-icon.png" alt="Perfil">Perfil</a></li>
+            </ul>
+        </nav>
+
+        <!-- Contenido Principal -->
+        <main class="content">
+            <section class="hero">
+                <h1>Bienvenido a la página</h1>
+                <p>Explora el contenido y disfruta la experiencia.</p>
+            </section>
+            <section class="grid-layout">
+                <div class="box">Caja 1</div>
+                <div class="box">Caja 2</div>
+                <div class="box">Caja 3</div>
+                <div class="box">Caja 4</div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
