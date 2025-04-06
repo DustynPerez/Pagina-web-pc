@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Configuración básica del documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro2</title>
+    <meta name="description" content="Ejemplo: Login 1">
+    
+    <!-- Pre-carga y enlace a estilos CSS -->
+    <link rel="preload" href="..\css\normalize.css" as="style">
+    <link rel="stylesheet" href="..\css\normalize.css">
+    
+    <!-- Conexión    con fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10+Charted&display=swap" rel="stylesheet">
+    
+    <!-- Pre-carga y enlace al archivo principal de estilos -->
+    <link rel="preload" href="..\css\styles.css" as="style">
+    <link rel="stylesheet" href="..\css\styles.css">
+</head>
+
+<body>
+
+    <!-- Sección de fondo con clase para estilos específicos -->
+    <section class="fondo fondo--registro">
+        <div class="capa-fondo">
+            
+            <!-- Contenedor principal -->
+            <main class="contenedor">
+                <div class="contenido">
+                    <h1>Crea tu cuenta</h1>
+                    
+                    <!-- Formulario de registro -->
+                    <form class="formulario-registro">
+                        
+                        <!-- Campo para el nombre -->
+                        <div class="campoIzq nombre">
+                            <input class="registro__field nombre-field" type="text" placeholder="Nombre" id="name">
+                        </div>
+
+                        <!-- Campo para el apellido -->
+                        <div class="campoDer apellido">
+                            <input class="registro__field apellido-field" type="text" placeholder="Apellido" id="lastname">
+                        </div>
+
+                        <!-- Campo para el correo electrónico -->
+                        <div class="campoIzq email1">
+                            <input class="registro__field email-field" type="email" placeholder="Correo Electrónico" id="email">
+                        </div>
+
+                        <!-- Campo para confirmar el correo electrónico -->
+                        <div class="campoDer email2">
+                            <input class="registro__field email-field" type="email" placeholder="Confirma el correo electrónico" id="email-confirm">
+                        </div>
+
+                        <!-- Campo para la contraseña -->
+                        <div class="campoIzq contraseña1">
+                            <input class="registro__field contraseña-field" type="password" placeholder="Contraseña" id="password">
+                        </div>
+
+                        <!-- Campo para confirmar la contraseña -->
+                        <div class="campoDer contraseña2">
+                            <input class="registro__field contraseña-field" type="password" placeholder="Confirma la contraseña" id="password-confirm">
+                        </div>
+
+                        <!-- Botón para ir al login -->
+                        <div class="campoIzq boton1">
+                            <a href="iniciosesion.html" class="boton boton--secundario">Login</a>
+                        </div>
+
+                        <!-- Botón para enviar el formulario y crear la cuenta -->
+                        <div class="campoDer boton2">
+                            <input type="submit" value="Crear Cuenta" class="boton boton--primario">
+                        </div>
+                    </form>
+                </div> <!-- Fin div contenido -->
+            </main> <!-- Fin main -->
+        </div> <!-- Fin div capa de fondo -->
+    </section> <!-- Fin sección fondo -->
+
+</body>
+
+</html>
