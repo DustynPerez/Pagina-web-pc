@@ -1,0 +1,173 @@
+
+/* Reset y estilos base (igual que la página anterior) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F5F5DC;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Header (idéntico al original) */
+header {
+    background-color: #2E86C1;
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+}
+
+header h1 {
+    font-size: 28px;
+    order: 1;
+}
+
+nav.desktop-menu {
+    display: flex;
+    gap: 10px;
+    order: 2;
+}
+
+nav.desktop-menu button {
+    background-color: #85C1E9;
+    color: #1B4F72;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+nav.desktop-menu button:hover {
+    background-color: #21618C;
+    color: white;
+}
+
+.cart-icon {
+    order: 3;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+.cart-count {
+    background-color: #E74C3C;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    order: 4;
+}
+
+nav.mobile-menu {
+    display: none;
+    width: 100%;
+    order: 5;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 15px;
+}
+
+nav.mobile-menu button {
+    background-color: #85C1E9;
+    color: #1B4F72;
+    border: none;
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    nav.desktop-menu {
+        display: none !important;
+    }
+    .hamburger {
+        display: block;
+    }
+    nav.mobile-menu.active {
+        display: flex;
+    }
+}
+
+/* ---------------------- */
+/* Estilos específicos para CONTACTO */
+.contact-section {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-section h2 {
+    color: #2E86C1;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    transition: transform 0.3s;
+    background-color: #F0F8FF; /* Azul muy claro */
+}
+
+.contact-method:hover {
+    transform: translateY(-5px);
+}
+
+.contact-icon {
+    font-size: 40px;
+    margin-right: 20px;
+    color: #2E86C1;
+}
+
+.whatsapp { color: #25D366 !important; } /* Verde WhatsApp */
+.instagram { 
+    background: linear-gradient(45deg, #405DE6, #833AB4, #C13584, #E1306C, #FD1D1D);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+}
+
+.contact-info h3 {
+    color: #1B4F72;
+    margin-bottom: 5px;
+}
+
+.contact-info a {
+    color: #21618C;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}

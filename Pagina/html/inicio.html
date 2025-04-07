@@ -178,6 +178,10 @@
             alert(`¡Gracias por suscribirte con ${email}! Pronto recibirás nuestras novedades.`);
             this.reset();
         });
+        // Redirigir al hacer clic en el carrito
+        document.getElementById('cartIcon').addEventListener('click', () => {
+            window.location.href = 'carrito.html'; // Asume que tienes esta página
+        });
     </script>
 </body>
 </html>
