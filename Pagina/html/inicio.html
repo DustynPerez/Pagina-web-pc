@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ColorFix - Tienda de ropa con estilo y calidad">
+    <title>Inicio | ColorFix</title>
+    <link rel="stylesheet" href="../css/styles_inicio.css">
+</head>
+<body>
+    <header>
+        <h1>ColorFix</h1>
+        
+         <!-- Menú desktop -->
+         <nav class="desktop-menu">
+            <button onclick="window.location.href='Inicio.html'">Inicio</button>
+            <button onclick="window.location.href='productos.html'" style="background-color: #21618C; color: white;">Productos</button>
+            <button onclick="window.location.href='nosotros.html'">Nosotros</button>
+            <button onclick="window.location.href='contacto.html'">Contacto</button>
+        </nav>
+        
+        <div class="cart-icon" id="cartIcon">
+            🛒 <span class="cart-count" id="cartCount">0</span>
+        </div>
+        
+        <button class="hamburger" id="hamburgerBtn">☰</button>
+        
+        <nav class="mobile-menu" id="mobileMenu">
+            <button>Inicio</button>
+            <button>Productos</button>
+            <button>Nosotros</button>
+            <button>Contacto</button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Moda con Propósito</h2>
+            <p>Descubre nuestra colección sostenible diseñada para durar</p>
+            <a href="#productos" class="btn">Ver Colección</a>
+        </div>
+    </section>
+
+    <section class="featured" id="productos">
+        <h2 class="section-title">Productos Destacados</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80');"></div>
+                <div class="product-info">
+                    <h3>Camisa Oxford</h3>
+                    <p>Clásica y versátil, perfecta para cualquier ocasión</p>
+                    <div class="price">$34.99</div>
+                    <button class="btn">Añadir al Carrito</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');"></div>
+                <div class="product-info">
+                    <h3>Jeans Slim Fit</h3>
+                    <p>Comodidad y estilo en un diseño moderno</p>
+                    <div class="price">$49.99</div>
+                    <button class="btn">Añadir al Carrito</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');"></div>
+                <div class="product-info">
+                    <h3>Chaqueta Denim</h3>
+                    <p>Un básico atemporal para tu guardarropa</p>
+                    <div class="price">$59.99</div>
+                    <button class="btn">Añadir al Carrito</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories">
+        <h2 class="section-title">Explora Categorías</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ropa de Hombre">
+                <div class="category-overlay">
+                    <h3>Hombre</h3>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ropa de Mujer">
+                <div class="category-overlay">
+                    <h3>Mujer</h3>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1595341595379-cf0f0f5220b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Accesorios">
+                <div class="category-overlay">
+                    <h3>Accesorios</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <h2 class="section-title">Únete a nuestra comunidad</h2>
+        <p>Suscríbete para recibir ofertas exclusivas y novedades</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Tu correo electrónico" required>
+            <button type="submit" class="btn">Suscribirse</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Inicio</a>
+            <a href="#">Productos</a>
+            <a href="#">Nosotros</a>
+            <a href="#">Contacto</a>
+        </div>
+        <p>&copy; 2023 ColorFix. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Carrito (localStorage)
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartCount = document.getElementById('cartCount');
+        
+        function updateCart() {
+            cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+        updateCart();
+
+        // Menú hamburguesa
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Añadir productos al carrito
+        document.querySelectorAll('.product-card .btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const productCard = this.closest('.product-card');
+                const productName = productCard.querySelector('h3').textContent;
+                const productPrice = productCard.querySelector('.price').textContent;
+                
+                // Buscar si el producto ya está en el carrito
+                const existingItem = cart.find(item => item.name === productName);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        name: productName,
+                        price: productPrice,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                
+                // Notificación visual
+                this.textContent = '✓ Añadido';
+                setTimeout(() => {
+                    this.textContent = 'Añadir al Carrito';
+                }, 2000);
+            });
+        });
+
+        // Newsletter (simulación)
+        const newsletterForm = document.querySelector('.newsletter-form');
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            alert(`¡Gracias por suscribirte con ${email}! Pronto recibirás nuestras novedades.`);
+            this.reset();
+        });
+    </script>
+</body>
+</html>
