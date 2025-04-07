@@ -13,10 +13,10 @@
         
         <!-- Menú desktop -->
         <nav class="desktop-menu">
-            <button>Inicio</button>
-            <button>Productos</button>
-            <button>Nosotros</button>
-            <button>Contacto</button>
+            <button onclick="window.location.href='index.html'">Inicio</button>
+            <button onclick="window.location.href='productos.html'" style="background-color: #21618C; color: white;">Productos</button>
+            <button onclick="window.location.href='nosotros.html'">Nosotros</button>
+            <button onclick="window.location.href='contacto.html'">Contacto</button>
         </nav>
         
         <!-- Carrito -->
@@ -59,6 +59,10 @@
         
         hamburgerBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
+        });
+        // Redirigir al hacer clic en el carrito
+        document.getElementById('cartIcon').addEventListener('click', () => {
+            window.location.href = 'iniciosesion.html'; // Asume que tienes esta página
         });
     </script>
 </body>
