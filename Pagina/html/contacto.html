@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Contacta a ColorFix - Tienda de ropa con estilo y calidad">
     <title>Contacto - ColorFix</title>
-    <link rel="stylesheet" href="..\css\styles_contacto.css">
-    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="../css/styles_contacto.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header idéntico al original -->
     <header>
         <h1>ColorFix</h1>
         
@@ -35,11 +33,9 @@
         </nav>
     </header>
 
-    <!-- Contenido de Contacto -->
     <section class="contact-section">
         <h2>Contáctanos</h2>
         
-        <!-- WhatsApp -->
         <div class="contact-method">
             <div class="contact-icon">
                 <i class="fab fa-whatsapp whatsapp"></i>
@@ -51,7 +47,6 @@
             </div>
         </div>
         
-        <!-- Instagram -->
         <div class="contact-method">
             <div class="contact-icon">
                 <i class="fab fa-instagram instagram"></i>
@@ -64,32 +59,21 @@
         </div>
     </section>
 
-    <!-- Scripts idénticos al original -->
+    <script src="../js/cart.js"></script>
     <script>
-        // Carrito (localStorage)
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const cartCount = document.getElementById('cartCount');
-        
-        function updateCart() {
-            cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
-            localStorage.setItem('cart', JSON.stringify(cart));
-        }
-        updateCart();
-
         // Menú hamburguesa
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         
         hamburgerBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
-           
-            // Redirigir al hacer clic en el carrito
-        document.getElementById('cartIcon').addEventListener('click', () => {
-            window.location.href = 'carrito.html'; // Asume que tienes esta página
         });
+
+        // Redirigir al carrito
+        document.getElementById('cartIcon').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'carrito.html';
         });
     </script>
-    <script src="js/cart.js"></script>
-    <script src="js/main.js"></script>
 </body>
 </html>
