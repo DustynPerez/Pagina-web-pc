@@ -123,65 +123,49 @@
 
     <script>
         // Carrito (localStorage)
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const cartCount = document.getElementById('cartCount');
-        
-        function updateCart() {
-            cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
-            localStorage.setItem('cart', JSON.stringify(cart));
-        }
-        updateCart();
+        // Función para añadir productos al carrito
+function addToCart(product) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Verificar si el producto ya está en el carrito
+    const existingItem = cart.find(item => item.id === product.id);
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            quantity: 1
+        });
+    }
+    
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Actualizar contador en todas las páginas
+    const cartCountElements = document.querySelectorAll('.cart-count');
+    const count = cart.reduce((total, item) => total + item.quantity, 0);
+    cartCountElements.forEach(el => el.textContent = count);
+    
+    // Mostrar feedback al usuario
+    alert(`${product.name} se ha añadido al carrito`);
+}
 
-        // Menú hamburguesa
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        hamburgerBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-        });
-
-        // Añadir productos al carrito
-        document.querySelectorAll('.product-card .btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const productCard = this.closest('.product-card');
-                const productName = productCard.querySelector('h3').textContent;
-                const productPrice = productCard.querySelector('.price').textContent;
-                
-                // Buscar si el producto ya está en el carrito
-                const existingItem = cart.find(item => item.name === productName);
-                
-                if (existingItem) {
-                    existingItem.quantity += 1;
-                } else {
-                    cart.push({
-                        name: productName,
-                        price: productPrice,
-                        quantity: 1
-                    });
-                }
-                
-                updateCart();
-                
-                // Notificación visual
-                this.textContent = '✓ Añadido';
-                setTimeout(() => {
-                    this.textContent = 'Añadir al Carrito';
-                }, 2000);
-            });
-        });
-
-        // Newsletter (simulación)
-        const newsletterForm = document.querySelector('.newsletter-form');
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input').value;
-            alert(`¡Gracias por suscribirte con ${email}! Pronto recibirás nuestras novedades.`);
-            this.reset();
-        });
-        // Redirigir al hacer clic en el carrito
-        document.getElementById('cartIcon').addEventListener('click', () => {
-            window.location.href = 'carrito.html'; // Asume que tienes esta página
-        });
+// Ejemplo de uso en un botón de producto
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', function() {
+        const productCard = this.closest('.product-card');
+        const product = {
+            id: productCard.dataset.id,
+            name: productCard.querySelector('.product-name').textContent,
+            price: parseFloat(productCard.querySelector('.product-price').textContent.replace('$', '')),
+            image: productCard.querySelector('.product-image').src
+        };
+        addToCart(product);
+    });
+});
     </script>
     <script src="js/cart.js"></script>
     <script src="js/main.js"></script>
