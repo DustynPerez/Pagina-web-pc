@@ -6,6 +6,224 @@
     <meta name="description" content="Carrito de compras - ColorFix">
     <title>Carrito | ColorFix</title>
     <link rel="stylesheet" href="../css/styles_carrito.css">
+    <style>
+        /* Estilos básicos para el carrito */
+        .cart-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .cart-title {
+            font-size: 2.5rem;
+            color: #1B4F72;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .cart-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: #E74C3C;
+            margin: 15px auto;
+        }
+
+        .cart-items {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .cart-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            background-color: #2E86C1;
+            color: white;
+            padding: 15px 20px;
+            font-weight: bold;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .item-img {
+            width: 80px;
+            height: 80px;
+            background-color: #85C1E9;
+            border-radius: 5px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .item-name {
+            font-weight: bold;
+            color: #1B4F72;
+        }
+
+        .item-price {
+            color: #2E86C1;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            background-color: #85C1E9;
+            color: #1B4F72;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quantity-btn:hover {
+            background-color: #21618C;
+            color: white;
+        }
+
+        .quantity {
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .remove-btn {
+            background-color: #E74C3C;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .remove-btn:hover {
+            background-color: #C0392B;
+        }
+
+        .cart-summary {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .summary-row.total {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #1B4F72;
+            border-bottom: none;
+        }
+
+        .checkout-btn {
+            background-color: #E74C3C;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .checkout-btn:hover {
+            background-color: #C0392B;
+            transform: translateY(-3px);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .empty-cart p {
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+        }
+
+        .continue-btn {
+            background-color: #2E86C1;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .continue-btn:hover {
+            background-color: #21618C;
+        }
+
+        @media (max-width: 768px) {
+            .cart-header {
+                display: none;
+            }
+            
+            .cart-item {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                position: relative;
+                padding: 15px;
+            }
+            
+            .item-info {
+                grid-column: 1 / -1;
+            }
+            
+            .remove-btn {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                padding: 5px 8px;
+            }
+            
+            .quantity-control {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -41,7 +259,7 @@
         
         <div class="empty-cart" id="empty-cart-message">
             <p>Tu carrito está vacío</p>
-            <button class="continue-btn" onclick="window.location.href='iniciosesion.html'">Continuar Comprando</button>
+            <button class="continue-btn" onclick="window.location.href='inicio.html'">Continuar Comprando</button>
         </div>
     </div>
 
@@ -62,11 +280,17 @@
         const cartContent = document.getElementById('cart-content');
         const emptyCartMessage = document.getElementById('empty-cart-message');
         
-        // Actualizar contador
-        function updateCart() {
-            cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+        // Función para guardar el carrito
+        function saveCart() {
             localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
             renderCart();
+        }
+        
+        // Actualizar contador del carrito
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
         }
         
         // Renderizar el carrito
@@ -93,7 +317,12 @@
             let total = 0;
             
             cart.forEach((item, index) => {
-                const subtotal = parseFloat(item.price.replace('$', '')) * item.quantity;
+                // Asegurarse que el precio es un número
+                const price = typeof item.price === 'string' ? 
+                    parseFloat(item.price.replace('$', '')) : 
+                    item.price;
+                
+                const subtotal = price * item.quantity;
                 total += subtotal;
                 
                 itemsHTML += `
@@ -102,10 +331,10 @@
                             <div class="item-img" style="background-image: url('${item.image || 'https://via.placeholder.com/80'}');"></div>
                             <div>
                                 <div class="item-name">${item.name}</div>
-                                <div class="item-price">${item.price}</div>
+                                <div class="item-price">$${price.toFixed(2)}</div>
                             </div>
                         </div>
-                        <div>${item.price}</div>
+                        <div>$${price.toFixed(2)}</div>
                         <div class="quantity-control">
                             <button class="quantity-btn" onclick="changeQuantity(${index}, -1)">-</button>
                             <span class="quantity">${item.quantity}</span>
@@ -117,7 +346,7 @@
                 `;
             });
             
-            itemsHTML += </div>;
+            itemsHTML += `</div>`;
             
             itemsHTML += `
                 <div class="cart-summary">
@@ -150,21 +379,32 @@
             }
             
             cart[index].quantity = newQuantity;
-            updateCart();
+            saveCart();
         }
         
         // Eliminar item
         function removeItem(index) {
             cart.splice(index, 1);
-            updateCart();
+            saveCart();
         }
         
         // Proceder al pago
         function checkout() {
-            alert('¡Gracias por tu compra! Total: $' + 
-                  cart.reduce((total, item) => total + (parseFloat(item.price.replace('$', '')) * item.quantity, 0).toFixed(2));
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => {
+                const price = typeof item.price === 'string' ? 
+                    parseFloat(item.price.replace('$', '')) : 
+                    item.price;
+                return sum + (price * item.quantity);
+            }, 0);
+            
+            alert(`¡Gracias por tu compra! Total: $${total.toFixed(2)}`);
             cart = [];
-            updateCart();
+            saveCart();
         }
         
         // Menú hamburguesa
@@ -175,8 +415,11 @@
             mobileMenu.classList.toggle('active');
         });
         
-        // Inicializar
-        updateCart();
+        // Redirigir al hacer clic en el icono del carrito
+        document.getElementById('cartIcon').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'carrito.html';
+        });
         
         // Mejorar los datos del carrito si vienen de la página de productos
         if (cart.length > 0 && !cart[0].image) {
@@ -188,15 +431,18 @@
             
             cart.forEach((item, index) => {
                 item.image = sampleImages[index % sampleImages.length];
+                // Asegurar que el precio es un número
+                if (typeof item.price === 'string') {
+                    item.price = parseFloat(item.price.replace('$', ''));
+                }
             });
             
             localStorage.setItem('cart', JSON.stringify(cart));
-            renderCart();
-            // Redirigir al hacer clic en el carrito
-        document.getElementById('cartIcon').addEventListener('click', () => {
-            window.location.href = 'carrito.html'; // Asume que tienes esta página
-        });
         }
+        
+        // Inicializar
+        updateCartCount();
+        renderCart();
     </script>
 </body>
 </html>
