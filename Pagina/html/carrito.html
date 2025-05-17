@@ -41,7 +41,7 @@
         
         <div class="empty-cart" id="empty-cart-message">
             <p>Tu carrito está vacío</p>
-            <button class="continue-btn" onclick="window.location.href='iniciosesion.html'">Continuar Comprando</button>
+            <button class="continue-btn" onclick="window.location.href='inicio.html'">Continuar Comprando</button>
         </div>
     </div>
 
@@ -198,5 +198,20 @@
         });
         }
     </script>
+    <script>
+    function checkout() {
+        if (cart.length === 0) {
+            alert('Tu carrito está vacío');
+            return;
+        }
+        
+        // Aquí iría la lógica de pago
+        alert(`Pedido realizado! Total: $${cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2)}`);
+        cart = [];
+        saveCart();
+        renderCartPage();
+    }
+    window.checkout = checkout;
+</script>
 </body>
 </html>
