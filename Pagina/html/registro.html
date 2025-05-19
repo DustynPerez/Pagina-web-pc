@@ -74,14 +74,21 @@
 
                         <!-- Botón para enviar el formulario y crear la cuenta -->
                         <div class="campoDer boton2">
-                            <a href="inicio.html" class="boton boton--secundario">Inicio</a>
-                        </div>
+                            <button type="button" class="boton boton--secundario" onclick="registrarUsuario()">Registrarse</button>
                     </form>
                 </div> <!-- Fin div contenido -->
             </main> <!-- Fin main -->
         </div> <!-- Fin div capa de fondo -->
     </section> <!-- Fin sección fondo -->
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/11.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.7.1/firebase-firestore-compat.js"></script>
 
+<!-- Tu configuración de Firebase -->
+<script src="../js/configuracion.js"></script>
+
+<!-- Funcionalidad de registro -->
+<script src="../js/registro.js"></script>
 </body>
-
 </html>

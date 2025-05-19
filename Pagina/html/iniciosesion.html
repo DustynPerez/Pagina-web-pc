@@ -60,14 +60,28 @@
                         
                         <!-- Botón para enviar el formulario e iniciar sesión -->
                         <div class="campo4">
-                            <a href="inicio.html" class="boton boton--secundario">Inicio</a>
+                            <button class="boton boton--secundario" type="button" onclick="iniciarSesion()">Iniciar Sesión</button>
                         </div>
+
+                        <!-- Botón para recuperar contraseña -->
+                        <div class="campo4">
+                        <button type="button" class="boton boton--secundario" onclick="recuperarContrasena()">¿Olvidaste tu contraseña?</button>
+                        </div>
+
                     </form>
                 </div> <!-- Fin div contenido -->
             </main> <!-- Fin main -->
         </div> <!-- Fin div capa de fondo -->
     </section> <!-- Fin sección fondo -->
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/11.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.7.1/firebase-firestore-compat.js"></script>
 
+<!-- Tu configuración -->
+<script src="../js/configuracion.js"></script>
+
+<!-- Script de login -->
+<script src="../js/login.js"></script>
 </body>
-
 </html>
