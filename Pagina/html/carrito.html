@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Carrito de compras - ColorFix">
-    <title>Carrito | ColorFix</title>
-    <link rel="stylesheet" href="../css/styles_carrito.css">
+    <meta name="description" content="ColorFix - Tienda de ropa con estilo y calidad">
+    <title>Inicio | ColorFix</title>
+    <link rel="stylesheet" href="../css/styles_inicio.css">
 </head>
 <body>
     <header>
@@ -25,12 +25,13 @@
         <button class="hamburger" id="hamburgerBtn">☰</button>
         
         <nav class="mobile-menu" id="mobileMenu">
-            <button onclick="window.location.href='inicio.html'">Inicio</button>
-            <button onclick="window.location.href='productos.html'">Productos</button>
-            <button onclick="window.location.href='nosotros.html'">Nosotros</button>
-            <button onclick="window.location.href='contacto.html'">Contacto</button>
+            <button>Inicio</button>
+            <button>Productos</button>
+            <button>Nosotros</button>
+            <button>Contacto</button>
         </nav>
     </header>
+
 
     <div class="cart-container">
         <h1 class="cart-title">Tu Carrito de Compras</h1>
@@ -41,7 +42,7 @@
         
         <div class="empty-cart" id="empty-cart-message">
             <p>Tu carrito está vacío</p>
-            <button class="continue-btn" onclick="window.location.href='iniciosesion.html'">Continuar Comprando</button>
+            <button class="continue-btn" onclick="window.location.href='productos.html'">Continuar Comprando</button>
         </div>
     </div>
 
@@ -55,22 +56,14 @@
         <p>&copy; 2025 ColorFix. Todos los derechos reservados.</p>
     </footer>
 
+    <script src="../js/cart.js"></script>
     <script>
-        // Carrito (localStorage)
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const cartCount = document.getElementById('cartCount');
-        const cartContent = document.getElementById('cart-content');
-        const emptyCartMessage = document.getElementById('empty-cart-message');
-        
-        // Actualizar contador
-        function updateCart() {
-            cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            renderCart();
-        }
-        
-        // Renderizar el carrito
+        // Función para renderizar el carrito
         function renderCart() {
+            const cart = getCart();
+            const cartContent = document.getElementById('cart-content');
+            const emptyCartMessage = document.getElementById('empty-cart-message');
+            
             if (cart.length === 0) {
                 cartContent.innerHTML = '';
                 emptyCartMessage.style.display = 'block';
@@ -92,32 +85,32 @@
             
             let total = 0;
             
-            cart.forEach((item, index) => {
-                const subtotal = parseFloat(item.price.replace('$', '')) * item.quantity;
+            cart.forEach((item) => {
+                const subtotal = item.price * item.quantity;
                 total += subtotal;
                 
                 itemsHTML += `
                     <div class="cart-item">
                         <div class="item-info">
-                            <div class="item-img" style="background-image: url('${item.image || 'https://via.placeholder.com/80'}');"></div>
+                            <div class="item-img" style="background-image: url('${item.image}')"></div>
                             <div>
                                 <div class="item-name">${item.name}</div>
-                                <div class="item-price">${item.price}</div>
+                                <div class="item-price">$${item.price.toFixed(2)}</div>
                             </div>
                         </div>
-                        <div>${item.price}</div>
+                        <div>$${item.price.toFixed(2)}</div>
                         <div class="quantity-control">
-                            <button class="quantity-btn" onclick="changeQuantity(${index}, -1)">-</button>
-                            <span class="quantity">${item.quantity}</span>
-                            <button class="quantity-btn" onclick="changeQuantity(${index}, 1)">+</button>
+                            <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${item.quantity - 1}); renderCart();">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${item.quantity + 1}); renderCart();">+</button>
                         </div>
                         <div>$${subtotal.toFixed(2)}</div>
-                        <div><button class="remove-btn" onclick="removeItem(${index})">Eliminar</button></div>
+                        <div><button class="remove-btn" onclick="removeFromCart('${item.id}'); renderCart();">Eliminar</button></div>
                     </div>
                 `;
             });
             
-            itemsHTML += </div>;
+            itemsHTML += `</div>`;
             
             itemsHTML += `
                 <div class="cart-summary">
@@ -140,31 +133,18 @@
             cartContent.innerHTML = itemsHTML;
         }
         
-        // Cambiar cantidad
-        function changeQuantity(index, change) {
-            const newQuantity = cart[index].quantity + change;
-            
-            if (newQuantity < 1) {
-                removeItem(index);
+        function checkout() {
+            const cart = getCart();
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío');
                 return;
             }
             
-            cart[index].quantity = newQuantity;
-            updateCart();
-        }
-        
-        // Eliminar item
-        function removeItem(index) {
-            cart.splice(index, 1);
-            updateCart();
-        }
-        
-        // Proceder al pago
-        function checkout() {
-            alert('¡Gracias por tu compra! Total: $' + 
-                  cart.reduce((total, item) => total + (parseFloat(item.price.replace('$', '')) * item.quantity, 0).toFixed(2));
-            cart = [];
-            updateCart();
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            alert(`¡Gracias por tu compra! Total: $${total.toFixed(2)}`);
+            localStorage.removeItem('cart');
+            renderCart();
+            updateCartCount();
         }
         
         // Menú hamburguesa
@@ -176,27 +156,9 @@
         });
         
         // Inicializar
-        updateCart();
-        
-        // Mejorar los datos del carrito si vienen de la página de productos
-        if (cart.length > 0 && !cart[0].image) {
-            const sampleImages = [
-                'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80',
-                'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
-                'https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
-            ];
-            
-            cart.forEach((item, index) => {
-                item.image = sampleImages[index % sampleImages.length];
-            });
-            
-            localStorage.setItem('cart', JSON.stringify(cart));
+        document.addEventListener('DOMContentLoaded', () => {
             renderCart();
-            // Redirigir al hacer clic en el carrito
-        document.getElementById('cartIcon').addEventListener('click', () => {
-            window.location.href = 'carrito.html'; // Asume que tienes esta página
         });
-        }
     </script>
 </body>
 </html>

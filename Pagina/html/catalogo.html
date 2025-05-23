@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="ColorFix - Catálogo de productos de moda">
     <title>ColorFix - Productos</title>
-    <link rel="stylesheet" href="..\css\styles_catalogo.css">
+    <link rel="stylesheet" href="../css/styles_catalogo.css">
 </head>
 <body>
     <header>
         <h1>ColorFix</h1>
         
-        <!-- Menú desktop -->
         <nav class="desktop-menu">
             <button onclick="window.location.href='Inicio.html'">Inicio</button>
             <button onclick="window.location.href='productos.html'" style="background-color: #21618C; color: white;">Productos</button>
@@ -19,15 +18,12 @@
             <button onclick="window.location.href='contacto.html'">Contacto</button>
         </nav>
         
-        <!-- Carrito -->
         <div class="cart-icon" id="cartIcon">
             🛒 <span class="cart-count" id="cartCount">0</span>
         </div>
         
-        <!-- Hamburguesa (solo móvil) -->
         <button class="hamburger" id="hamburgerBtn">☰</button>
         
-        <!-- Menú móvil (oculto) -->
         <nav class="mobile-menu" id="mobileMenu">
             <button onclick="window.location.href='index.html'">Inicio</button>
             <button onclick="window.location.href='productos.html'" style="background-color: #21618C; color: white;">Productos</button>
@@ -37,51 +33,65 @@
     </header>
 
     <div class="container">
-        <!-- Camisetas -->
         <div class="category">Camisetas</div>
-        <div class="card" onclick="addToCart('Camiseta Básica')">Camiseta Básica<br>$19.99</div>
-        <div class="card" onclick="addToCart('Camiseta Estampada')">Camiseta Estampada<br>$24.99</div>
-        <div class="card" onclick="addToCart('Camiseta Manga Larga')">Camiseta Manga Larga<br>$29.99</div>
-        <div class="card" onclick="addToCart('Camiseta Oversize')">Camiseta Oversize<br>$27.99</div>
+        <div class="card" data-id="camiseta-basica" data-name="Camiseta Básica" data-price="19.99" data-image="https://via.placeholder.com/150">
+            Camiseta Básica<br>$19.99
+        </div>
+        <div class="card" data-id="camiseta-estampada" data-name="Camiseta Estampada" data-price="24.99" data-image="https://via.placeholder.com/150">
+            Camiseta Estampada<br>$24.99
+        </div>
+        <div class="card" data-id="camiseta-manga-larga" data-name="Camiseta Manga Larga" data-price="29.99" data-image="https://via.placeholder.com/150">
+            Camiseta Manga Larga<br>$29.99
+        </div>
+        <div class="card" data-id="camiseta-oversize" data-name="Camiseta Oversize" data-price="27.99" data-image="https://via.placeholder.com/150">
+            Camiseta Oversize<br>$27.99
+        </div>
 
-        <!-- Pantalones -->
         <div class="category">Pantalones</div>
-        <div class="card" onclick="addToCart('Jeans Clásico')">Jeans Clásico<br>$39.99</div>
-        <div class="card" onclick="addToCart('Pantalón Chino')">Pantalón Chino<br>$34.99</div>
-        <div class="card" onclick="addToCart('Jogger Deportivo')">Jogger Deportivo<br>$31.99</div>
-        <div class="card" onclick="addToCart('Pantalón Cargo')">Pantalón Cargo<br>$36.99</div>
+        <div class="card" data-id="jeans-clasico" data-name="Jeans Clásico" data-price="39.99" data-image="https://via.placeholder.com/150">
+            Jeans Clásico<br>$39.99
+        </div>
+        <div class="card" data-id="pantalon-chino" data-name="Pantalón Chino" data-price="34.99" data-image="https://via.placeholder.com/150">
+            Pantalón Chino<br>$34.99
+        </div>
+        <div class="card" data-id="jogger-deportivo" data-name="Jogger Deportivo" data-price="31.99" data-image="https://via.placeholder.com/150">
+            Jogger Deportivo<br>$31.99
+        </div>
+        <div class="card" data-id="pantalon-cargo" data-name="Pantalón Cargo" data-price="36.99" data-image="https://via.placeholder.com/150">
+            Pantalón Cargo<br>$36.99
+        </div>
 
-        <!-- Accesorios -->
         <div class="category">Accesorios</div>
-        <div class="card" onclick="addToCart('Gorra ColorFix')">Gorra ColorFix<br>$15.99</div>
-        <div class="card" onclick="addToCart('Bufanda de Lana')">Bufanda de Lana<br>$22.99</div>
-        <div class="card" onclick="addToCart('Cinturón de Cuero')">Cinturón de Cuero<br>$28.99</div>
-        <div class="card" onclick="addToCart('Guantes de Punto')">Guantes de Punto<br>$18.99</div>
+        <div class="card" data-id="gorra-colorfix" data-name="Gorra ColorFix" data-price="15.99" data-image="https://via.placeholder.com/150">
+            Gorra ColorFix<br>$15.99
+        </div>
+        <div class="card" data-id="bufanda-lana" data-name="Bufanda de Lana" data-price="22.99" data-image="https://via.placeholder.com/150">
+            Bufanda de Lana<br>$22.99
+        </div>
+        <div class="card" data-id="cinturon-cuero" data-name="Cinturón de Cuero" data-price="28.99" data-image="https://via.placeholder.com/150">
+            Cinturón de Cuero<br>$28.99
+        </div>
+        <div class="card" data-id="guantes-punto" data-name="Guantes de Punto" data-price="18.99" data-image="https://via.placeholder.com/150">
+            Guantes de Punto<br>$18.99
+        </div>
     </div>
 
+    <script src="../js/cart.js"></script>
     <script>
-        // Carrito (localStorage)
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const cartCount = document.getElementById('cartCount');
-        
-        // Actualizar contador
-        function updateCart() {
-            cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
-            localStorage.setItem('cart', JSON.stringify(cart));
-        }
-        updateCart();
-
-        // Añadir producto al carrito
-        function addToCart(productName) {
-            const existingItem = cart.find(item => item.name === productName);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ name: productName, quantity: 1 });
-            }
-            updateCart();
-            alert(`¡${productName} añadido al carrito!`);
-        }
+        // Configurar eventos para los productos
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function() {
+                const product = {
+                    id: this.dataset.id,
+                    name: this.dataset.name,
+                    price: parseFloat(this.dataset.price),
+                    image: this.dataset.image
+                };
+                
+                addToCart(product);
+                alert(`${product.name} añadido al carrito!`);
+            });
+        });
 
         // Menú hamburguesa
         const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -91,9 +101,10 @@
             mobileMenu.classList.toggle('active');
         });
 
-        // Redirigir al hacer clic en el carrito
-        document.getElementById('cartIcon').addEventListener('click', () => {
-            window.location.href = 'carrito.html'; // Asume que tienes esta página
+        // Redirigir al carrito
+        document.getElementById('cartIcon').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'carrito.html';
         });
     </script>
 </body>
