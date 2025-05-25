@@ -15,7 +15,6 @@
             <button onclick="window.location.href='Inicio.html'">Inicio</button>
             <button onclick="window.location.href='productos.html'">Productos</button>
             <button onclick="window.location.href='nosotros.html'">Nosotros</button>
-            <button onclick="window.location.href='contacto.html'">Contacto</button>
         </nav>
         
         <div class="cart-icon" id="cartIcon">
@@ -28,7 +27,6 @@
             <button>Inicio</button>
             <button>Productos</button>
             <button>Nosotros</button>
-            <button>Contacto</button>
         </nav>
     </header>
 
@@ -79,16 +77,16 @@
         <h2 class="section-title">Explora Categorías</h2>
         <div class="category-grid">
             <div class="category-card" onclick="window.location.href='productos.html'">
-                <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ropa de Hombre">
+                <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Camisetas">
                 <div class="category-overlay">
-                    <h3>Hombre</h3>
+                    <h3>Camisetas</h3>
                 </div>
             </div>
             
             <div class="category-card" onclick="window.location.href='productos.html'">
-                <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ropa de Mujer">
+                <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pantalones">
                 <div class="category-overlay">
-                    <h3>Mujer</h3>
+                    <h3>Pantalones</h3>
                 </div>
             </div>
             
@@ -100,26 +98,6 @@
             </div>
         </div>
     </section>
-
-    <section class="newsletter">
-        <h2 class="section-title">Únete a nuestra comunidad</h2>
-        <p>Suscríbete para recibir ofertas exclusivas y novedades</p>
-        <form class="newsletter-form">
-            <input type="email" placeholder="Tu correo electrónico" required>
-            <button onclick="window.location.href='registro.html'">Registro</button>
-
-        </form>
-    </section>
-
-    <footer>
-        <div class="footer-links">
-            <a href="inicio.html">Inicio</a>
-            <a href="productos.html">Productos</a>
-            <a href="nosotros.html">Nosotros</a>
-            <a href="contacto.html">Contacto</a>
-        </div>
-        <p>&copy; 2023 ColorFix. Todos los derechos reservados.</p>
-    </footer>
 
     <script src="../js/cart.js"></script>
     <script>
@@ -163,14 +141,6 @@
         document.getElementById('cartIcon').addEventListener('click', (e) => {
             e.preventDefault();
             window.location.href = 'carrito.html';
-        });
-
-        // Newsletter (simulación)
-        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input').value;
-            alert(`¡Gracias por suscribirte con ${email}! Pronto recibirás nuestras novedades.`);
-            this.reset();
         });
     </script>
 </body>
