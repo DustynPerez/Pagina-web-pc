@@ -259,94 +259,89 @@
     <script src="../js/cart.js"></script>
     <script>
         // Función para renderizar el carrito
-        function renderCart() {
-            const cart = getCart();
-            const cartContent = document.getElementById('cart-content');
-            const emptyCartMessage = document.getElementById('empty-cart-message');
-            
-            if (cart.length === 0) {
-                cartContent.innerHTML = '';
-                emptyCartMessage.style.display = 'block';
-                return;
-            }
-            
-            emptyCartMessage.style.display = 'none';
-            
-            let itemsHTML = `
-                <div class="cart-items">
-                    <div class="cart-header">
-                        <div>Producto</div>
-                        <div>Precio</div>
-                        <div>Cantidad</div>
-                        <div>Subtotal</div>
-                        <div></div>
-                    </div>
-            `;
-            
-            let total = 0;
-            
-            cart.forEach((item) => {
-                const subtotal = item.price * item.quantity;
-                total += subtotal;
-                
-                itemsHTML += `
-                    <div class="cart-item">
-                        <div class="item-info">
-                            <div class="item-img" style="background-image: url('${item.image}')"></div>
-                            <div>
-                                <div class="item-name">${item.name}</div>
-                                <div class="item-price">$${item.price.toFixed(2)}</div>
-                            </div>
-                        </div>
-                        <div>$${item.price.toFixed(2)}</div>
-                        <div class="quantity-control">
-                            <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${item.quantity - 1}); renderCart();">-</button>
-                            <span>${item.quantity}</span>
-                            <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${item.quantity + 1}); renderCart();">+</button>
-                        </div>
-                        <div>$${subtotal.toFixed(2)}</div>
-                        <div><button class="remove-btn" onclick="removeFromCart('${item.id}'); renderCart();">Eliminar</button></div>
-                    </div>
-                `;
-            });
-            
-            itemsHTML += `</div>`;
-            
-            itemsHTML += `
-                <div class="cart-summary">
-                    <div class="summary-row">
-                        <span>Subtotal:</span>
-                        <span>$${total.toFixed(2)}</span>
-                    </div>
-                    <div class="summary-row">
-                        <span>Envío:</span>
-                        <span>Gratis</span>
-                    </div>
-                    <div class="summary-row total">
-                        <span>Total:</span>
-                        <span>$${total.toFixed(2)}</span>
-                    </div>
-                    <button class="checkout-btn" onclick="checkout()">Proceder al Pago</button>
-                </div>
-            `;
-            
-            cartContent.innerHTML = itemsHTML;
-            updateCartCount();
-        }
         
-        function checkout() {
-            const cart = getCart();
-            if (cart.length === 0) {
-                alert('Tu carrito está vacío');
-                return;
-            }
-            
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            alert(`¡Gracias por tu compra! Total: $${total.toFixed(2)}`);
-            localStorage.removeItem('cart');
-            renderCart();
-            updateCartCount();
-        }
+        
+        function renderCart() {
+    const cart = getCart();
+    const cartContent = document.getElementById('cart-content');
+    const emptyCartMessage = document.getElementById('empty-cart-message');
+    
+    console.log('Contenido del carrito:', cart); // Verifica en consola
+    
+    if (!cart || cart.length === 0) {
+        cartContent.innerHTML = '';
+        emptyCartMessage.style.display = 'block';
+        return;
+    }
+    
+    emptyCartMessage.style.display = 'none';
+    
+    let itemsHTML = `
+        <div class="cart-items">
+            <div class="cart-header">
+                <div>Producto</div>
+                <div>Precio</div>
+                <div>Cantidad</div>
+                <div>Subtotal</div>
+                <div></div>
+            </div>
+    `;
+    
+    let total = 0;
+    
+    cart.forEach((item) => {
+        // Verificación adicional de datos
+        if (!item || !item.id) return;
+        
+        const price = parseFloat(item.price) || 0;
+        const quantity = parseInt(item.quantity) || 1;
+        const subtotal = price * quantity;
+        total += subtotal;
+        
+        itemsHTML += `
+            <div class="cart-item">
+                <div class="item-info">
+                    <div class="item-img" style="background-image: url('${item.image || ''}')"></div>
+                    <div>
+                        <h3 class="item-name">${item.name || 'Producto'}</h3>
+                        <span class="item-id">ID: ${item.id}</span>
+                    </div>
+                </div>
+                <div class="item-price">$${price.toFixed(2)}</div>
+                <div class="quantity-control">
+                    <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${quantity - 1}); renderCart();">-</button>
+                    <span class="quantity">${quantity}</span>
+                    <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${quantity + 1}); renderCart();">+</button>
+                </div>
+                <div class="item-subtotal">$${subtotal.toFixed(2)}</div>
+                <div><button class="remove-btn" onclick="removeFromCart('${item.id}'); renderCart();">✕</button></div>
+            </div>
+        `;
+    });
+    
+    itemsHTML += `</div>`;
+    
+    itemsHTML += `
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Subtotal:</span>
+                <span>$${total.toFixed(2)}</span>
+            </div>
+            <div class="summary-row">
+                <span>Envío:</span>
+                <span>Gratis</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total:</span>
+                <span>$${total.toFixed(2)}</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Proceder al Pago</button>
+        </div>
+    `;
+    
+    cartContent.innerHTML = itemsHTML;
+    updateCartCount();
+}
         
         // Menú hamburguesa
         const hamburgerBtn = document.getElementById('hamburgerBtn');
