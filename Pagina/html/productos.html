@@ -270,26 +270,26 @@
         });
 
         // Configurar botones de añadir al carrito
-        document.querySelectorAll('.product-card .btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const card = this.closest('.product-card');
-                const product = {
-                    id: card.dataset.id,
-                    name: card.dataset.name,
-                    price: parseFloat(card.dataset.price),
-                    image: card.dataset.image
-                };
-                
-                addToCart(product);
-                
-                // Feedback visual
-                this.textContent = '✓ Añadido';
-                setTimeout(() => {
-                    this.textContent = 'Añadir al Carrito';
-                }, 2000);
-            });
+    document.querySelectorAll('.product-card .btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const card = this.closest('.product-card');
+            const product = {
+                id: card.dataset.id,
+                name: card.dataset.name,
+                price: parseFloat(card.dataset.price),
+                image: card.dataset.image
+            };
+            
+            addToCart(product);
+            
+            // Feedback visual
+            this.textContent = '✓ Añadido';
+            setTimeout(() => {
+                this.textContent = 'Añadir al Carrito';
+            }, 2000);
         });
+    });
 
         // Menú hamburguesa
         const hamburgerBtn = document.getElementById('hamburgerBtn');
