@@ -475,6 +475,7 @@ footer {
 .user-menu-container:focus-within #profile-icon {
   box-shadow: 0 0 8px 2px #2980b9;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 }
 <<<<<<< Updated upstream
 =======
@@ -501,6 +502,10 @@ footer {
 =======
 }
 
+=======
+}
+
+>>>>>>> Stashed changes
 #user-dropdown {
   position: absolute;
   top: 48px;
@@ -520,6 +525,9 @@ footer {
   pointer-events: auto;
 }
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 #user-dropdown.active {
   display: flex; /* mostrar menú */
@@ -628,6 +636,10 @@ footer {
 .dropdown-btn span {
     font-size: 16px;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+}
+>>>>>>> Stashed changes
+=======
 }
 >>>>>>> Stashed changes
 =======
