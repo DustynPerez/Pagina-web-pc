@@ -3,9 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ColorFix - Tienda de ropa con estilo y calidad">
-    <title>Inicio | ColorFix</title>
+    <meta name="description" content="ColorFix - Carrito de compras">
+    <title>Carrito | ColorFix</title>
     <link rel="stylesheet" href="../css/styles_inicio.css">
+    <style>
+        /* === ESTILOS ESPECÍFICOS DEL CARRITO === */
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .cart-page {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .cart-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: #333;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .cart-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #21618C;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 50px 0;
+        }
+        
+        .empty-cart p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .continue-btn {
+            background-color: #21618C;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .continue-btn:hover {
+            background-color: #1A5276;
+        }
+        
+        .cart-items {
+            margin-bottom: 40px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .cart-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr;
+            padding: 15px 20px;
+            background-color: #f5f5f5;
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .cart-item {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr;
+            padding: 20px;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .item-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .item-img {
+            width: 80px;
+            height: 80px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+        }
+        
+        .item-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .item-price {
+            color: #666;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quantity-btn:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .remove-btn:hover {
+            text-decoration: underline;
+        }
+        
+        .cart-summary {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin-left: auto;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .total {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            border-bottom: none;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            background-color: #21618C;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .checkout-btn:hover {
+            background-color: #1A5276;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -15,7 +214,6 @@
             <button onclick="window.location.href='Inicio.html'">Inicio</button>
             <button onclick="window.location.href='productos.html'">Productos</button>
             <button onclick="window.location.href='nosotros.html'">Nosotros</button>
-            <button onclick="window.location.href='contacto.html'">Contacto</button>
         </nav>
         
         <div class="cart-icon" id="cartIcon">
@@ -25,17 +223,20 @@
         <button class="hamburger" id="hamburgerBtn">☰</button>
         
         <nav class="mobile-menu" id="mobileMenu">
-            <button>Inicio</button>
-            <button>Productos</button>
-            <button>Nosotros</button>
-            <button>Contacto</button>
+            <button onclick="window.location.href='Inicio.html'">Inicio</button>
+            <button onclick="window.location.href='productos.html'">Productos</button>
+            <button onclick="window.location.href='nosotros.html'">Nosotros</button>
         </nav>
     </header>
 
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Tu Carrito de Compras</h2>
+            <p>Revisa y finaliza tu pedido</p>
+        </div>
+    </section>
 
-    <div class="cart-container">
-        <h1 class="cart-title">Tu Carrito de Compras</h1>
-        
+    <div class="cart-page">
         <div id="cart-content">
             <!-- Los productos del carrito se cargarán aquí dinámicamente -->
         </div>
@@ -51,101 +252,96 @@
             <a href="inicio.html">Inicio</a>
             <a href="productos.html">Productos</a>
             <a href="nosotros.html">Nosotros</a>
-            <a href="contacto.html">Contacto</a>
         </div>
-        <p>&copy; 2023 ColorFix. Todos los derechos reservados.</p>
+        <p>&copy; 2025 ColorFix. Todos los derechos reservados.</p>
     </footer>
 
     <script src="../js/cart.js"></script>
     <script>
         // Función para renderizar el carrito
-        function renderCart() {
-            const cart = getCart();
-            const cartContent = document.getElementById('cart-content');
-            const emptyCartMessage = document.getElementById('empty-cart-message');
-            
-            if (cart.length === 0) {
-                cartContent.innerHTML = '';
-                emptyCartMessage.style.display = 'block';
-                return;
-            }
-            
-            emptyCartMessage.style.display = 'none';
-            
-            let itemsHTML = `
-                <div class="cart-items">
-                    <div class="cart-header">
-                        <div>Producto</div>
-                        <div>Precio</div>
-                        <div>Cantidad</div>
-                        <div>Subtotal</div>
-                        <div></div>
-                    </div>
-            `;
-            
-            let total = 0;
-            
-            cart.forEach((item) => {
-                const subtotal = item.price * item.quantity;
-                total += subtotal;
-                
-                itemsHTML += `
-                    <div class="cart-item">
-                        <div class="item-info">
-                            <div class="item-img" style="background-image: url('${item.image}')"></div>
-                            <div>
-                                <div class="item-name">${item.name}</div>
-                                <div class="item-price">$${item.price.toFixed(2)}</div>
-                            </div>
-                        </div>
-                        <div>$${item.price.toFixed(2)}</div>
-                        <div class="quantity-control">
-                            <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${item.quantity - 1}); renderCart();">-</button>
-                            <span>${item.quantity}</span>
-                            <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${item.quantity + 1}); renderCart();">+</button>
-                        </div>
-                        <div>$${subtotal.toFixed(2)}</div>
-                        <div><button class="remove-btn" onclick="removeFromCart('${item.id}'); renderCart();">Eliminar</button></div>
-                    </div>
-                `;
-            });
-            
-            itemsHTML += `</div>`;
-            
-            itemsHTML += `
-                <div class="cart-summary">
-                    <div class="summary-row">
-                        <span>Subtotal:</span>
-                        <span>$${total.toFixed(2)}</span>
-                    </div>
-                    <div class="summary-row">
-                        <span>Envío:</span>
-                        <span>Gratis</span>
-                    </div>
-                    <div class="summary-row total">
-                        <span>Total:</span>
-                        <span>$${total.toFixed(2)}</span>
-                    </div>
-                    <button class="checkout-btn" onclick="checkout()">Proceder al Pago</button>
-                </div>
-            `;
-            
-            cartContent.innerHTML = itemsHTML;
-        }
         
-        function checkout() {
-            const cart = getCart();
-            if (cart.length === 0) {
-                alert('Tu carrito está vacío');
-                return;
-            }
-            
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            alert(`¡Gracias por tu compra! Total: $${total.toFixed(2)}`);
-            localStorage.removeItem('cart');
-            renderCart();
-            updateCartCount();
-        }
+        
+        function renderCart() {
+    const cart = getCart();
+    const cartContent = document.getElementById('cart-content');
+    const emptyCartMessage = document.getElementById('empty-cart-message');
+    
+    console.log('Contenido del carrito:', cart); // Verifica en consola
+    
+    if (!cart || cart.length === 0) {
+        cartContent.innerHTML = '';
+        emptyCartMessage.style.display = 'block';
+        return;
+    }
+    
+    emptyCartMessage.style.display = 'none';
+    
+    let itemsHTML = `
+        <div class="cart-items">
+            <div class="cart-header">
+                <div>Producto</div>
+                <div>Precio</div>
+                <div>Cantidad</div>
+                <div>Subtotal</div>
+                <div></div>
+            </div>
+    `;
+    
+    let total = 0;
+    
+    cart.forEach((item) => {
+        // Verificación adicional de datos
+        if (!item || !item.id) return;
+        
+        const price = parseFloat(item.price) || 0;
+        const quantity = parseInt(item.quantity) || 1;
+        const subtotal = price * quantity;
+        total += subtotal;
+        
+        itemsHTML += `
+            <div class="cart-item">
+                <div class="item-info">
+                    <div class="item-img" style="background-image: url('${item.image || ''}')"></div>
+                    <div>
+                        <h3 class="item-name">${item.name || 'Producto'}</h3>
+                        <span class="item-id">ID: ${item.id}</span>
+                    </div>
+                </div>
+                <div class="item-price">$${price.toFixed(2)}</div>
+                <div class="quantity-control">
+                    <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${quantity - 1}); renderCart();">-</button>
+                    <span class="quantity">${quantity}</span>
+                    <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${quantity + 1}); renderCart();">+</button>
+                </div>
+                <div class="item-subtotal">$${subtotal.toFixed(2)}</div>
+                <div><button class="remove-btn" onclick="removeFromCart('${item.id}'); renderCart();">✕</button></div>
+            </div>
+        `;
+    });
+    
+    itemsHTML += `</div>`;
+    
+    itemsHTML += `
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Subtotal:</span>
+                <span>$${total.toFixed(2)}</span>
+            </div>
+            <div class="summary-row">
+                <span>Envío:</span>
+                <span>Gratis</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total:</span>
+                <span>$${total.toFixed(2)}</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Proceder al Pago</button>
+        </div>
+    `;
+    
+    cartContent.innerHTML = itemsHTML;
+    updateCartCount();
+}
         
         // Menú hamburguesa
         const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -153,6 +349,12 @@
         
         hamburgerBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
+        });
+        
+        // Redirigir al carrito
+        document.getElementById('cartIcon').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'carrito.html';
         });
         
         // Inicializar

@@ -4,10 +4,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="ColorFix - Tienda de ropa con estilo y calidad">
-    <title>ColorFix - Tienda de Ropa</title>
-    <link rel="stylesheet" href="../css/styles_nosotros.css">
+    <title>Nosotros y Contacto | ColorFix</title>
+    <link rel="stylesheet" href="../css/styles_inicio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* === ESTILOS ADICIONALES === */
+        .combined-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding: 40px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* === CAMBIA ESTA LÍNEA PARA MODIFICAR LA IMAGEN DE FONDO DEL HERO === */
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .about-section, .contact-section {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-section {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .contact-method:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+        }
+        
+        .whatsapp {
+            background-color: #25D366;
+        }
+        
+        .instagram {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+        
+        .contact-info a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        
+        .contact-info a:hover {
+            color: #555;
+        }
+        
+        h2.section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
+    <!-- Resto del código permanece igual -->
     <header>
         <h1>ColorFix</h1>
         
@@ -15,7 +127,6 @@
             <button onclick="window.location.href='Inicio.html'">Inicio</button>
             <button onclick="window.location.href='productos.html'">Productos</button>
             <button onclick="window.location.href='nosotros.html'">Nosotros</button>
-            <button onclick="window.location.href='contacto.html'">Contacto</button>
         </nav>
         
         <div class="cart-icon" id="cartIcon">
@@ -25,20 +136,66 @@
         <button class="hamburger" id="hamburgerBtn">☰</button>
         
         <nav class="mobile-menu" id="mobileMenu">
-            <button>Inicio</button>
-            <button>Productos</button>
-            <button>Nosotros</button>
-            <button>Contacto</button>
+            <button onclick="window.location.href='Inicio.html'">Inicio</button>
+            <button onclick="window.location.href='productos.html'">Productos</button>
+            <button onclick="window.location.href='nosotros.html'">Nosotros</button>
+            <button onclick="window.location.href='contacto.html'">Contacto</button>
         </nav>
     </header>
 
-    <section class="nosotros">
-        <h2>Nosotros</h2>
-        <p>Moda sostenible y de calidad desde 2023</p>
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Conoce más sobre nosotros</h2>
+            <p>Descubre nuestra historia y cómo contactarnos</p>
+        </div>
     </section>
+
+    <!-- Resto del contenido permanece igual -->
+    <div class="combined-section">
+        <section class="about-section">
+            <h2 class="section-title">Nosotros</h2>
+            <p>ColorFix nació en 2025 con la visión de ofrecer moda sostenible y de calidad a precios accesibles. Nuestro equipo está compuesto por apasionados del diseño y la moda que creen en un enfoque responsable con el medio ambiente.</p>
+            <p>Nos especializamos en prendas clásicas pero con un toque moderno, diseñadas para durar y mantenerse en tendencia temporada tras temporada.</p>
+            <p>En ColorFix, no solo vendemos ropa, creamos conexiones con nuestros clientes a través de productos que cuentan historias y reflejan valores.</p>
+        </section>
+
+        <section class="contact-section">
+            <h2 class="section-title">Contáctanos</h2>
+            
+            <div class="contact-method">
+                <div class="contact-icon">
+                    <i class="fab fa-whatsapp whatsapp"></i>
+                </div>
+                <div class="contact-info">
+                    <h3>WhatsApp</h3>
+                    <p>Chat directo con nuestro equipo de ventas.</p>
+                    <a href="https://wa.me/1234567890" target="_blank">+1 234 567 890 <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            
+            <div class="contact-method">
+                <div class="contact-icon">
+                    <i class="fab fa-instagram instagram"></i>
+                </div>
+                <div class="contact-info">
+                    <h3>Instagram</h3>
+                    <p>Síguenos para ver nuevos productos y promociones.</p>
+                    <a href="https://instagram.com/colorfix_tienda" target="_blank">@colorfix_tienda <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <script src="../js/cart.js"></script>
     <script>
+        // Configurar imágenes de productos (si las hubiera)
+        document.querySelectorAll('.product-img').forEach(img => {
+            const card = img.closest('.product-card');
+            if(card) {
+                img.style.backgroundImage = `url('${card.dataset.image}')`;
+            }
+        });
+
         // Menú hamburguesa
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const mobileMenu = document.getElementById('mobileMenu');
