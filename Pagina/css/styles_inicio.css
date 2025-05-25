@@ -474,6 +474,7 @@ footer {
 .user-menu-container:hover #profile-icon,
 .user-menu-container:focus-within #profile-icon {
   box-shadow: 0 0 8px 2px #2980b9;
+<<<<<<< Updated upstream
 }
 <<<<<<< Updated upstream
 =======
@@ -497,6 +498,29 @@ footer {
   pointer-events: auto;
 }
 
+=======
+}
+
+#user-dropdown {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  background-color: white;
+  color: #333;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  min-width: 220px;
+  display: none; /* oculto por defecto */
+  flex-direction: column;
+  z-index: 1001;
+  font-size: 14px;
+  padding: 8px 0;
+  user-select: none;
+  transition: opacity 0.25s ease;
+  pointer-events: auto;
+}
+
+>>>>>>> Stashed changes
 #user-dropdown.active {
   display: flex; /* mostrar menú */
   opacity: 1;
@@ -603,5 +627,9 @@ footer {
 
 .dropdown-btn span {
     font-size: 16px;
+<<<<<<< Updated upstream
+}
+>>>>>>> Stashed changes
+=======
 }
 >>>>>>> Stashed changes
