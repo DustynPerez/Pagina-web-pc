@@ -32,4 +32,41 @@ function recuperarContrasena() {
     .catch((error) => {
       alert("Error al enviar correo: " + error.message);
     });
+
+    function toggleMenu() {
+  const menu = document.getElementById("user-menu");
+  if (menu) menu.classList.toggle("hidden");
+}
+
+function logout() {
+  firebase.auth().signOut().then(() => {
+    window.location.href = "iniciosesion.html";
+  });
+}
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    const uid = user.uid;
+    firebase.database().ref("usuarios/" + uid).once("value").then((snapshot) => {
+      const userData = snapshot.val();
+      if (userData) {
+        const profile = document.getElementById("user-profile");
+        if (profile) {
+          profile.innerHTML = `
+            <img src="../img/default-profile.png" alt="Perfil" class="profile-icon" onclick="toggleMenu()" />
+            <div id="user-menu" class="user-menu hidden">
+              <p id="user-name">${userData.nombre || "Sin nombre"}</p>
+              <p id="user-email">${userData.email || user.email}</p>
+              <button onclick="logout()">Cerrar sesión</button>
+            </div>
+          `;
+        }
+      }
+    });
+  } else {
+    const profile = document.getElementById("user-profile");
+    if (profile) profile.style.display = "none";
+  }
+});
+
 }
