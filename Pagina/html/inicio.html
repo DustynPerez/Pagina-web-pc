@@ -1,35 +1,51 @@
-<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ColorFix - Tienda de ropa con estilo y calidad">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="ColorFix - Tienda de ropa con estilo y calidad" />
     <title>Inicio | ColorFix</title>
-    <link rel="stylesheet" href="../css/styles_inicio.css">
+    <link rel="stylesheet" href="../css/styles_inicio.css" />
+    <!-- Firebase compatibilidad para scripts tradicionales -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
     <header>
-        <h1>ColorFix</h1>
-        
-        <nav class="desktop-menu">
+        <div class="header-container">
+            <!-- Logo y navegación a la izquierda -->
+            <div class="header-left">
+                <h1>ColorFix</h1>
+                <nav class="desktop-menu">
+                    <button onclick="window.location.href='Inicio.html'">Inicio</button>
+                    <button onclick="window.location.href='productos.html'">Productos</button>
+                    <button onclick="window.location.href='nosotros.html'">Nosotros</button>
+                </nav>
+            </div>
+
+            <!-- Elementos a la derecha -->
+            <div class="header-right">
+                <div class="cart-icon" id="cartIcon">
+                    🛒 <span class="cart-count" id="cartCount">0</span>
+                </div>
+
+                <div id="user-menu-container" class="user-menu-container">
+                    <img src="../img/perfil.jpg" id="profile-icon" alt="Perfil" class="profile-icon" />
+                    <div id="user-dropdown" class="user-dropdown hidden">
+                        <!-- Contenido dinámico se insertará aquí -->
+                    </div>
+                </div>
+
+                <button class="hamburger" id="hamburgerBtn">☰</button>
+            </div>
+        </div>
+
+        <nav class="mobile-menu" id="mobileMenu">
             <button onclick="window.location.href='Inicio.html'">Inicio</button>
             <button onclick="window.location.href='productos.html'">Productos</button>
             <button onclick="window.location.href='nosotros.html'">Nosotros</button>
-            <button onclick="window.location.href='contacto.html'">Contacto</button>
-        </nav>
-        
-        <div class="cart-icon" id="cartIcon">
-            🛒 <span class="cart-count" id="cartCount">0</span>
-        </div>
-        
-        <button class="hamburger" id="hamburgerBtn">☰</button>
-        
-        <nav class="mobile-menu" id="mobileMenu">
-            <button>Inicio</button>
-            <button>Productos</button>
-            <button>Nosotros</button>
-            <button>Contacto</button>
         </nav>
     </header>
 
@@ -50,7 +66,7 @@
                     <h3>Camisa Oxford</h3>
                     <p>Clásica y versátil, perfecta para cualquier ocasión</p>
                     <div class="price">$34.99</div>
-                    <button class="btn">Añadir al Carrito</button>
+                    <button class="btn add-to-cart">Añadir al Carrito</button>
                 </div>
             </div>
             
@@ -60,7 +76,7 @@
                     <h3>Jeans Slim Fit</h3>
                     <p>Comodidad y estilo en un diseño moderno</p>
                     <div class="price">$49.99</div>
-                    <button class="btn">Añadir al Carrito</button>
+                    <button class="btn add-to-cart">Añadir al Carrito</button>
                 </div>
             </div>
             
@@ -70,7 +86,7 @@
                     <h3>Chaqueta Denim</h3>
                     <p>Un básico atemporal para tu guardarropa</p>
                     <div class="price">$59.99</div>
-                    <button class="btn">Añadir al Carrito</button>
+                    <button class="btn add-to-cart">Añadir al Carrito</button>
                 </div>
             </div>
         </div>
@@ -80,16 +96,16 @@
         <h2 class="section-title">Explora Categorías</h2>
         <div class="category-grid">
             <div class="category-card" onclick="window.location.href='productos.html'">
-                <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ropa de Hombre">
+                <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Camisetas">
                 <div class="category-overlay">
-                    <h3>Hombre</h3>
+                    <h3>Camisetas</h3>
                 </div>
             </div>
             
             <div class="category-card" onclick="window.location.href='productos.html'">
-                <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ropa de Mujer">
+                <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pantalones">
                 <div class="category-overlay">
-                    <h3>Mujer</h3>
+                    <h3>Pantalones</h3>
                 </div>
             </div>
             
@@ -102,282 +118,102 @@
         </div>
     </section>
 
-    <section class="newsletter">
-        <h2 class="section-title">Únete a nuestra comunidad</h2>
-        <p>Suscríbete para recibir ofertas exclusivas y novedades</p>
-        <form class="newsletter-form">
-            <input type="email" placeholder="Tu correo electrónico" required>
-            <button onclick="window.location.href='registro.html'">Registro</button>
-
-        </form>
-    </section>
-
-    <footer>
-        <div class="footer-links">
-            <a href="inicio.html">Inicio</a>
-            <a href="productos.html">Productos</a>
-            <a href="nosotros.html">Nosotros</a>
-            <a href="contacto.html">Contacto</a>
-        </div>
-        <p>&copy; 2023 ColorFix. Todos los derechos reservados.</p>
-    </footer>
-
     <script src="../js/cart.js"></script>
     <script>
-        // Configurar imágenes de productos
-        document.querySelectorAll('.product-img').forEach(img => {
-            const card = img.closest('.product-card');
-            img.style.backgroundImage = `url('${card.dataset.image}')`;
-        });
-
-        // Configurar botones de añadir al carrito
-        document.querySelectorAll('.product-card .btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const card = this.closest('.product-card');
-                const product = {
-                    id: card.dataset.id,
-                    name: card.dataset.name,
-                    price: parseFloat(card.dataset.price),
-                    image: card.dataset.image
-                };
-                
-                addToCart(product);
-                
-                // Feedback visual
-                this.textContent = '✓ Añadido';
-                setTimeout(() => {
-                    this.textContent = 'Añadir al Carrito';
-                }, 2000);
-            });
-        });
-
-        // Menú hamburguesa
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        hamburgerBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-        });
-
-        // Redirigir al carrito
-        document.getElementById('cartIcon').addEventListener('click', (e) => {
-            e.preventDefault();
-            window.location.href = 'carrito.html';
-        });
-
-        // Newsletter (simulación)
-        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input').value;
-            alert(`¡Gracias por suscribirte con ${email}! Pronto recibirás nuestras novedades.`);
-            this.reset();
-        });
-    </script>
-</body>
-</html>
-=======
-<!DOCTYPE html> 
-<html lang="es"> 
-<head> 
-    <meta charset="UTF-8" /> 
-    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
-    <meta name="description" content="ColorFix - Tienda de ropa con estilo y calidad" /> 
-    <title>Inicio | ColorFix</title> 
-    <link rel="stylesheet" href="../css/styles_inicio.css"> 
-    <link rel="stylesheet" href="../css/styles_inicio.css" /> 
-    <!-- Firebase compatibilidad para scripts tradicionales --> 
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script> 
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script> 
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script> 
-    <style> 
-    /* Estilos para notificaciones */ 
-    .notification 
-    { 
-        position: fixed; 
-        bottom: 20px; 
-        left: 50%; 
-        transform: 
-        translateX(-50%);
-        background-color: #21618C;
-        color: white; 
-        padding: 15px 25px; 
-        border-radius: 5px; 
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
-        z-index: 1000; 
-        opacity: 0; 
-        transition: 
-        opacity 0.3s; 
-    } 
-    .notification.show 
-    { 
-        opacity: 1; 
-    }   
-    </style>  
-    </head> 
-    <body> 
-        <header> 
-            <div class="header-container"> 
-                <!-- Logo y navegación a la izquierda --> 
-                    <div class="header-left"> 
-                    <h1>ColorFix</h1> 
-                    <nav class="desktop-menu"> 
-                    <button onclick="window.location.href='Inicio.html'">Inicio</button> 
-                    <button onclick="window.location.href='productos.html'">Productos</button> 
-                    <button onclick="window.location.href='nosotros.html'">Nosotros</button> 
-                </nav> 
-            </div> 
-            <!-- Elementos a la derecha --> 
-                <div class="header-right"> 
-                <div class="cart-icon" id="cartIcon"> 🛒 <span class="cart-count" id="cartCount">0</span> 
-                </div> <div id="user-menu-container" class="user-menu-container"> 
-                <img src="../img/perfil.jpg" id="profile-icon" alt="Perfil" class="profile-icon" /> 
-                <div id="user-dropdown" class="user-dropdown hidden">
-                    <!-- Contenido dinámico se insertará aquí --> </div> 
-                    
-                </div> 
-                
-                <button class="hamburger" id="hamburgerBtn">☰</button> 
-            </div> 
-        </div> 
-        <nav class="mobile-menu" id="mobileMenu"> 
-            <button onclick="window.location.href='Inicio.html'">Inicio</button> 
-            <button onclick="window.location.href='productos.html'">Productos</button> 
-            <button onclick="window.location.href='nosotros.html'">Nosotros</button> 
-        </nav>         
-        </div> 
-        <button class="hamburger" id="hamburgerBtn">☰</button> 
-        <nav class="mobile-menu" id="mobileMenu"> 
-            <button>Inicio</button> <button>Productos</button> 
-            <button>Nosotros</button> 
-        </nav>     
-    </header> 
-    <section class="hero"> 
-        <div class="hero-content"> 
-            <h2>Moda con Propósito</h2> <p>Descubre nuestra colección sostenible diseñada para durar</p> 
-            <a href="productos.html" class="btn">Ver Colección</a> 
-        </div> </section> <section class="featured" id="productos"> 
-            <h2 class="section-title">Productos Destacados</h2> 
-            <div class="products-grid"> 
-                <div class="product-card" data-id="camisa-oxford" data-name="Camisa Oxford" data-price="34.99" data-image="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"> 
-                    <div class="product-img"></div> 
-                    <div class="product-info"> 
-                        <h3>Camisa Oxford</h3> <p>Clásica y versátil, perfecta para cualquier ocasión</p> 
-                        <div class="price">$34.99</div> <button class="btn add-to-cart">Añadir al Carrito</button> 
-                    </div> 
-                </div> 
-                <div class="product-card" data-id="jeans-slim" data-name="Jeans Slim Fit" data-price="49.99" data-image="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"> 
-                    <div class="product-img"></div> 
-                    <div class="product-info"> 
-                        <h3>Jeans Slim Fit</h3> 
-                        <p>Comodidad y estilo en un diseño moderno</p> 
-                        <div class="price">$49.99</div> <button class="btn add-to-cart">Añadir al Carrito</button> 
-                    </div> 
-                </div> 
-                <div class="product-card" data-id="chaqueta-denim" data-name="Chaqueta Denim" data-price="59.99" data-image="https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"> 
-                    <div class="product-img"></div> 
-                    <div class="product-info"> 
-                        <h3>Chaqueta Denim</h3> 
-                        <p>Un básico atemporal para tu guardarropa</p> 
-                        <div class="price">$59.99</div> <button class="btn add-to-cart">Añadir al Carrito</button> 
-                    </div> 
-                </div> 
-            </div> 
-        </section> 
-        <section class="categories"> 
-            <h2 class="section-title">Explora Categorías</h2> 
-            <div class="category-grid"> 
-                <div class="category-card" onclick="window.location.href='productos.html'"> <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Camisetas"> 
-                    <div class="category-overlay"> 
-                        <h3>Camisetas</h3> 
-                    </div> 
-                </div> 
-                <div class="category-card" onclick="window.location.href='productos.html'"> <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pantalones"> 
-                    <div class="category-overlay"> 
-                        <h3>Pantalones</h3> 
-                    </div> 
-                </div> 
-                <div class="category-card" onclick="window.location.href='productos.html'"> <img src="https://images.unsplash.com/photo-1595341595379-cf0f0f5220b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Accesorios"> 
-                    <div class="category-overlay"> 
-                        <h3>Accesorios</h3> 
-                    </div> 
-                </div> 
-            </div> 
-        </section> 
-        <script src="../js/cart.js"></script> <script> 
-        // ===== FUNCIONES DEL CARRITO ===== 
+        // ===== FUNCIONES DEL CARRITO =====
         function getCart() {
-            const cart = localStorage.getItem('cart'); 
-            return cart ? JSON.parse(cart) : []; 
-            } 
-            function saveCart(cart) { 
-                localStorage.setItem('cart', JSON.stringify(cart)); updateCartCount(); 
-            } 
-            function addToCart(product) { 
-                const cart = getCart(); 
-                const existingItem = cart.find(item => item.id === product.id); 
-                if (existingItem) { existingItem.quantity += 1; } 
-                else { product.quantity = 1; cart.push(product); 
-                } 
-                saveCart(cart); 
-                showNotification(`${product.name} añadido al carrito`); 
-                } 
-            function updateCartCount() { 
-                const cart = getCart(); 
-                const count = cart.reduce((sum, item) => sum + item.quantity, 0); 
-                document.getElementById('cartCount').textContent = count; 
-                } 
-            function showNotification(message) { 
-                const notification = document.createElement('div'); 
-                notification.className = 'notification';
-                notification.textContent = message; document.body.appendChild(notification); 
-                setTimeout(() => notification.classList.add('show'), 10); 
-                setTimeout(() => { notification.classList.remove('show'); 
-                setTimeout(() => notification.remove(), 300); }, 3000); 
-                } 
-            // ===== CONFIGURACIÓN DE PRODUCTOS ===== 
-            document.addEventListener('DOMContentLoaded', function() { 
-                // Configurar imágenes de productos 
-                document.querySelectorAll('.product-img').forEach(img => { 
-                    const card = img.closest('.product-card'); 
-                    img.style.backgroundImage = `url('${card.dataset.image}')`; }); 
+            const cart = localStorage.getItem('cart');
+            return cart ? JSON.parse(cart) : [];
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+        }
+
+        function addToCart(product) {
+            const cart = getCart();
+            const existingItem = cart.find(item => item.id === product.id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                product.quantity = 1;
+                cart.push(product);
+            }
+            
+            saveCart(cart);
+            showNotification(`${product.name} añadido al carrito`);
+        }
+
+        function updateCartCount() {
+            const cart = getCart();
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.classList.add('show'), 10);
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // ===== CONFIGURACIÓN DE PRODUCTOS =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configurar imágenes de productos
+            document.querySelectorAll('.product-img').forEach(img => {
+                const card = img.closest('.product-card');
+                img.style.backgroundImage = `url('${card.dataset.image}')`;
+            });
+
+            // Configurar botones de añadir al carrito
+            document.querySelectorAll('.product-card .btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const card = this.closest('.product-card');
+                    const product = {
+                        id: card.dataset.id,
+                        name: card.dataset.name,
+                        price: parseFloat(card.dataset.price),
+                        image: card.dataset.image
+                    };
                     
-                    // Configurar botones de añadir al carrito 
-                    document.querySelectorAll('.product-card .btn').forEach(btn => { 
-                        btn.addEventListener('click', function(e) {
-                            e.stopPropagation(); 
-                            const card = this.closest('.product-card'); 
-                            const product = { 
-                                id: card.dataset.id, 
-                                name: card.dataset.name, 
-                                price: parseFloat(card.dataset.price), 
-                                image: card.dataset.image 
-                            }; 
-                        addToCart(product); 
-                    // Feedback visual 
-                    this.textContent = '✓ Añadido'; 
-                    setTimeout(() => { 
+                    addToCart(product);
+                    
+                    // Feedback visual
+                    this.textContent = '✓ Añadido';
+                    setTimeout(() => {
                         this.textContent = 'Añadir al Carrito';
-                    }, 
-                    2000); 
-                }); 
-            }); 
-            // Menú hamburguesa 
-            const hamburgerBtn = document.getElementById('hamburgerBtn'); 
-            const mobileMenu = document.getElementById('mobileMenu'); 
-            hamburgerBtn.addEventListener('click', () => { 
+                    }, 2000);
+                });
+            });
+
+            // Menú hamburguesa
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            hamburgerBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('active');
             });
-            // Redirigir al carrito 
-            document.getElementById('cartIcon').addEventListener('click', (e) => { 
-                e.preventDefault(); window.location.href = 'carrito.html'; 
-            }); 
-            // Inicializar contador del carrito 
-            updateCartCount();   }); 
-        </script> 
-        <script src="../js/perfil.js" defer></script> 
-        <script src="../js/configuracion.js"></script>
-    </body> 
+
+            // Redirigir al carrito
+            document.getElementById('cartIcon').addEventListener('click', (e) => {
+                e.preventDefault();
+                window.location.href = 'carrito.html';
+            });
+
+            // Inicializar contador del carrito
+            updateCartCount();
+        });
+    </script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/perfil.js" defer></script>
+    <script src="../js/configuracion.js"></script></body>
 </html>
->>>>>>> Stashed changes

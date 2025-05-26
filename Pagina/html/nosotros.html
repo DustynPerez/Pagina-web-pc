@@ -4,43 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="ColorFix - Tienda de ropa con estilo y calidad">
-<<<<<<< Updated upstream
-    <title>ColorFix - Tienda de Ropa</title>
-    <link rel="stylesheet" href="../css/styles_nosotros.css">
-</head>
-<body>
-    <header>
-        <h1>ColorFix</h1>
-        
-        <nav class="desktop-menu">
-            <button onclick="window.location.href='Inicio.html'">Inicio</button>
-            <button onclick="window.location.href='productos.html'">Productos</button>
-            <button onclick="window.location.href='nosotros.html'">Nosotros</button>
-            <button onclick="window.location.href='contacto.html'">Contacto</button>
-        </nav>
-        
-        <div class="cart-icon" id="cartIcon">
-            🛒 <span class="cart-count" id="cartCount">0</span>
-        </div>
-        
-        <button class="hamburger" id="hamburgerBtn">☰</button>
-        
-        <nav class="mobile-menu" id="mobileMenu">
-            <button>Inicio</button>
-            <button>Productos</button>
-            <button>Nosotros</button>
-            <button>Contacto</button>
-        </nav>
-    </header>
-=======
     <title>Nosotros y Contacto | ColorFix</title>
     <link rel="stylesheet" href="../css/styles_inicio.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Firebase compatibilidad para scripts tradicionales --> 
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script> 
+    <!-- Firebase compatibilidad para scripts tradicionales -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script> 
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
     <style>
         /* === ESTILOS ADICIONALES === */
         .combined-section {
@@ -153,7 +124,7 @@
     </style>
 </head>
 <body>
-   <header> 
+    <header> 
             <div class="header-container"> 
                 <!-- Logo y navegación a la izquierda --> 
                     <div class="header-left"> 
@@ -189,15 +160,60 @@
             <button>Nosotros</button> 
         </nav>         
     </header> 
->>>>>>> Stashed changes
 
-    <section class="nosotros">
-        <h2>Nosotros</h2>
-        <p>Moda sostenible y de calidad desde 2023</p>
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Conoce más sobre nosotros</h2>
+            <p>Descubre nuestra historia y cómo contactarnos</p>
+        </div>
     </section>
+
+    <!-- Resto del contenido permanece igual -->
+    <div class="combined-section">
+        <section class="about-section">
+            <h2 class="section-title">Nosotros</h2>
+            <p>ColorFix nació en 2025 con la visión de ofrecer moda sostenible y de calidad a precios accesibles. Nuestro equipo está compuesto por apasionados del diseño y la moda que creen en un enfoque responsable con el medio ambiente.</p>
+            <p>Nos especializamos en prendas clásicas pero con un toque moderno, diseñadas para durar y mantenerse en tendencia temporada tras temporada.</p>
+            <p>En ColorFix, no solo vendemos ropa, creamos conexiones con nuestros clientes a través de productos que cuentan historias y reflejan valores.</p>
+        </section>
+
+        <section class="contact-section">
+            <h2 class="section-title">Contáctanos</h2>
+            
+            <div class="contact-method">
+                <div class="contact-icon">
+                    <i class="fab fa-whatsapp whatsapp"></i>
+                </div>
+                <div class="contact-info">
+                    <h3>WhatsApp</h3>
+                    <p>Chat directo con nuestro equipo de ventas.</p>
+                    <a href="https://wa.me/1234567890" target="_blank">+1 234 567 890 <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            
+            <div class="contact-method">
+                <div class="contact-icon">
+                    <i class="fab fa-instagram instagram"></i>
+                </div>
+                <div class="contact-info">
+                    <h3>Instagram</h3>
+                    <p>Síguenos para ver nuevos productos y promociones.</p>
+                    <a href="https://instagram.com/colorfix_tienda" target="_blank">@colorfix_tienda <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <script src="../js/cart.js"></script>
     <script>
+        // Configurar imágenes de productos (si las hubiera)
+        document.querySelectorAll('.product-img').forEach(img => {
+            const card = img.closest('.product-card');
+            if(card) {
+                img.style.backgroundImage = `url('${card.dataset.image}')`;
+            }
+        });
+
         // Menú hamburguesa
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const mobileMenu = document.getElementById('mobileMenu');
