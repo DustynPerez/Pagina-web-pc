@@ -6,6 +6,209 @@
     <meta name="description" content="ColorFix - Tienda de ropa con estilo y calidad">
     <title>Inicio | ColorFix</title>
     <link rel="stylesheet" href="../css/styles_inicio.css">
+<<<<<<< Updated upstream
+=======
+    
+    <style>
+        /* === ESTILOS ESPECÍFICOS DEL CARRITO === */
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .cart-page {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .cart-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: #333;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .cart-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #21618C;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 50px 0;
+        }
+        
+        .empty-cart p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .continue-btn {
+            background-color: #21618C;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .continue-btn:hover {
+            background-color: #1A5276;
+        }
+        
+        .cart-items {
+            margin-bottom: 40px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .cart-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr;
+            padding: 15px 20px;
+            background-color: #f5f5f5;
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .cart-item {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr;
+            padding: 20px;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .item-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .item-img {
+            width: 80px;
+            height: 80px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+        }
+        
+        .item-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .item-price {
+            color: #666;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quantity-btn:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .remove-btn:hover {
+            text-decoration: underline;
+        }
+        
+        .cart-summary {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin-left: auto;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .total {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            border-bottom: none;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            background-color: #21618C;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .checkout-btn:hover {
+            background-color: #1A5276;
+        }
+    </style>
+>>>>>>> Stashed changes
 </head>
 <body>
     <header>
@@ -128,6 +331,7 @@
                     </div>
                     <button class="checkout-btn" onclick="checkout()">Proceder al Pago</button>
                 </div>
+<<<<<<< Updated upstream
             `;
             
             cartContent.innerHTML = itemsHTML;
@@ -146,6 +350,44 @@
             renderCart();
             updateCartCount();
         }
+=======
+                <div class="item-price">$${price.toFixed(2)}</div>
+                <div class="quantity-control">
+                    <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${quantity - 1}); renderCart();">-</button>
+                    <span class="quantity">${quantity}</span>
+                    <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${quantity + 1}); renderCart();">+</button>
+                </div>
+                <div class="item-subtotal">$${subtotal.toFixed(2)}</div>
+                <div><button class="remove-btn" onclick="removeFromCart('${item.id}'); renderCart();">✕</button></div>
+            </div>
+        `;
+    });
+    
+    itemsHTML += `</div>`;
+    
+    itemsHTML += `
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Subtotal:</span>
+                <span>$${total.toFixed(2)}</span>
+            </div>
+            <div class="summary-row">
+                <span>Envío:</span>
+                <span>Gratis</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total:</span>
+                <span>$${total.toFixed(2)}</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Proceder al Pago</button>
+            
+        </div>
+    `;
+    
+    cartContent.innerHTML = itemsHTML;
+    updateCartCount();
+}
+>>>>>>> Stashed changes
         
         // Menú hamburguesa
         const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -159,6 +401,21 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderCart();
         });
+        
     </script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+    emailjs.init("FX5sI48o1FhWldsMO"); // 🟡 Reemplaza con tu public key
+    </script>
+
+    <!-- Firebase compatibilidad para scripts tradicionales --> 
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-functions-compat.js"></script> 
+    <script src="../js/checkout.js"></script>
+    <script src="../js/perfil.js" defer></script> 
+    <script src="../js/configuracion.js"></script>
 </body>
 </html>
