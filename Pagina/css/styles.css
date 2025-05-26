@@ -1,0 +1,333 @@
+:root {
+    --Fondo: #010f1d;
+    --negro: #000000;
+    --blanco: #ffffff;
+    --gris: #adabc9;
+
+    --fuenteHeadings: 'Roboto', sans-serif;
+    --fuenteParrafos: 'Roboto', sans-serif;
+}
+
+/* ===== RESET BÁSICO ===== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== GLOBAL ===== */
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: var(--Fondo);
+    color: var(--blanco);
+    font-family: var(--fuenteParrafos);
+    font-size: 1.6rem;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== TIPOGRAFÍA ===== */
+h1 {
+    font-size: 5rem;
+}
+
+h2 {
+    font-size: 4rem;
+}
+
+h1,
+h2 {
+    font-family: var(--fuenteHeadings);
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+p {
+    font-family: var(--fuenteParrafos);
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+    font-family: var(--fuenteHeadings);
+}
+
+/* ===== HEADER ===== */
+header {
+    background-color: #2E86C1;
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.header-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+header h1 {
+    font-size: 2.8rem;
+    margin-right: 10px;
+    user-select: none;
+}
+
+nav.desktop-menu {
+    display: flex;
+    gap: 12px;
+}
+
+nav.desktop-menu button {
+    background-color: #85C1E9;
+    color: #1B4F72;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav.desktop-menu button:hover,
+nav.desktop-menu button:focus {
+    background-color: #21618C;
+    color: white;
+    outline: none;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.cart-icon {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+    position: relative;
+}
+
+.cart-icon:hover {
+    background-color: rgba(255, 255, 255, 0.35);
+}
+
+.cart-count {
+    background-color: #E74C3C;
+    color: white;
+    border-radius: 50%;
+    padding: 3px 7px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+
+#profile-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    object-fit: cover;
+    transition: transform 0.2s ease;
+}
+
+#profile-icon:hover {
+    transform: scale(1.1);
+}
+
+#user-dropdown {
+    position: absolute;
+    top: 48px;
+    right: 0;
+    background-color: white;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    min-width: 220px;
+    display: none;
+    flex-direction: column;
+    z-index: 1001;
+    font-size: 1.4rem;
+}
+
+#user-dropdown.active {
+    display: flex;
+}
+
+#user-dropdown p,
+#user-dropdown .user-email {
+    padding: 12px 20px;
+    font-weight: 600;
+    border-bottom: 1px solid #eee;
+}
+
+#user-dropdown button {
+    background: none;
+    border: none;
+    padding: 12px 20px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-weight: 600;
+    color: #E74C3C;
+}
+
+#user-dropdown button:hover {
+    background-color: #FDEDEC;
+}
+
+/* ===== MENÚ MÓVIL ===== */
+.hamburger {
+    display: none;
+    font-size: 2.8rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+nav.mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 18px;
+    width: 100%;
+}
+
+nav.mobile-menu button {
+    background-color: #85C1E9;
+    color: #1B4F72;
+    border: none;
+    padding: 12px 16px;
+    text-align: left;
+    border-radius: 6px;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav.mobile-menu button:hover {
+    background-color: #21618C;
+    color: white;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    nav.desktop-menu {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    nav.mobile-menu.active {
+        display: flex;
+    }
+}
+
+/* ===== HERO (opcional) ===== */
+.hero {
+    background: linear-gradient(rgba(46, 134, 193, 0.7), rgba(46, 134, 193, 0.5)),
+                url('../img/slide1.jpg') center/cover no-repeat;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+/* ===== CONTENEDOR GENERAL ===== */
+.contenedor {
+    width: min(90%, 120rem);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* ===== FORMULARIO GENERAL ===== */
+.formulario, .formulario-registro {
+    display: grid;
+    gap: 2rem;
+    background-color: rgba(173, 171, 201, .1);
+    padding: 2rem 10rem;
+    border-radius: 2rem;
+}
+
+/* ===== CAMPOS ===== */
+.campo__label {
+    flex: 0 0 9rem;
+    text-align: right;
+}
+
+.campo__field, .registro__field {
+    border: none;
+    border-bottom: .2rem solid var(--blanco);
+    padding: 1rem;
+    color: var(--blanco);
+    background-color: transparent;
+    width: 100%;
+}
+
+::-webkit-input-placeholder {
+    color: var(--blanco);
+    text-transform: uppercase;
+}
+
+/* ===== BOTÓN GENERAL ===== */
+.boton, .btn {
+    background-color: var(--blanco);
+    color: var(--negro);
+    font-family: var(--fuenteHeadings);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.boton:hover, .btn:hover {
+    background-color: var(--gris);
+}
+
+/* Botones adicionales */
+.boton--secundario {
+    background-color: transparent;
+    border: .1rem solid var(--gris);
+    color: var(--blanco);
+}

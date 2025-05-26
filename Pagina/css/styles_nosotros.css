@@ -1,0 +1,239 @@
+/* ===== RESET GENERAL ===== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F5F5DC;
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== HEADER ===== */
+header {
+    background-color: #2E86C1;
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.header-container, .header-left, .header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+header h1 {
+    font-size: 28px;
+    color: white;
+    user-select: none;
+}
+
+/* ===== MENÚ DESKTOP ===== */
+nav.desktop-menu {
+    display: flex;
+    gap: 12px;
+}
+
+nav.desktop-menu button {
+    background-color: #85C1E9;
+    color: #1B4F72;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav.desktop-menu button:hover,
+nav.desktop-menu button:focus {
+    background-color: #21618C;
+    color: white;
+    outline: none;
+}
+
+/* ===== CARRITO ===== */
+.cart-icon {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.cart-icon:hover,
+.cart-icon:focus {
+    background-color: rgba(255, 255, 255, 0.35);
+    outline: none;
+}
+
+.cart-count {
+    background-color: #E74C3C;
+    color: white;
+    border-radius: 50%;
+    padding: 3px 7px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== MENÚ DE USUARIO ===== */
+#user-menu-container {
+    position: relative;
+    user-select: none;
+}
+
+#profile-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    object-fit: cover;
+}
+
+#profile-icon:hover,
+#profile-icon:focus {
+    box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.7);
+    outline: none;
+    transform: scale(1.1);
+}
+
+#user-dropdown {
+    position: absolute;
+    top: 48px;
+    right: 0;
+    background-color: white;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    min-width: 220px;
+    display: none;
+    flex-direction: column;
+    z-index: 1001;
+    font-size: 14px;
+    padding: 8px 0;
+    user-select: none;
+    transition: opacity 0.25s ease;
+    pointer-events: auto;
+}
+
+#user-dropdown.active {
+    display: flex;
+    opacity: 1;
+}
+
+#user-dropdown p,
+#user-dropdown .user-email,
+#user-dropdown .guest-label,
+#user-dropdown button {
+    padding: 12px 20px;
+    font-weight: 600;
+}
+
+#user-dropdown button {
+    background: none;
+    border: none;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 14px;
+    color: #E74C3C;
+}
+
+#user-dropdown button:hover,
+#user-dropdown button:focus {
+    background-color: #FDEDEC;
+    outline: none;
+}
+
+/* ===== MENÚ MÓVIL ===== */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    order: 4;
+}
+
+.hamburger:hover,
+.hamburger:focus {
+    color: #AED6F1;
+    outline: none;
+}
+
+nav.mobile-menu {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 18px;
+    order: 5;
+}
+
+nav.mobile-menu button {
+    background-color: #85C1E9;
+    color: #1B4F72;
+    border: none;
+    padding: 12px 16px;
+    text-align: left;
+    border-radius: 6px;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav.mobile-menu button:hover,
+nav.mobile-menu button:focus {
+    background-color: #21618C;
+    color: white;
+    outline: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    nav.desktop-menu {
+        display: none !important;
+    }
+    .hamburger {
+        display: block;
+    }
+    nav.mobile-menu.active {
+        display: flex;
+    }
+    .header-left {
+        flex: 1;
+    }
+    .header-right {
+        gap: 12px;
+    }
+}

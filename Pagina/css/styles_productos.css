@@ -1,0 +1,276 @@
+/* === RESET Y ESTILOS BASE === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F5F5DC;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* === HEADER === */
+header {
+    background-color: #2E86C1;
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+}
+
+header h1 {
+    font-size: 28px;
+    order: 1;
+}
+
+/* === MENÚ DESKTOP === */
+nav.desktop-menu {
+    display: flex;
+    gap: 10px;
+    order: 2;
+}
+
+nav.desktop-menu button,
+nav.mobile-menu button {
+    background-color: #85C1E9;
+    color: #1B4F72;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+nav.desktop-menu button:hover,
+nav.mobile-menu button:hover {
+    background-color: #21618C;
+    color: white;
+}
+
+/* === CARRITO === */
+.cart-icon {
+    order: 3;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+.cart-count {
+    background-color: #E74C3C;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+/* === MENÚ HAMBURGUESA Y MÓVIL === */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    order: 4;
+}
+
+nav.mobile-menu {
+    display: none;
+    width: 100%;
+    order: 5;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 15px;
+}
+
+nav.mobile-menu.active {
+    display: flex;
+}
+
+/* === RESPONSIVE MENU === */
+@media (max-width: 768px) {
+    nav.desktop-menu {
+        display: none !important;
+    }
+    .hamburger {
+        display: block;
+    }
+}
+
+/* === CATÁLOGO Y CATEGORÍAS === */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.category {
+    width: 100%;
+    margin: 20px 0 10px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 24px;
+    color: #1B4F72;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #85C1E9;
+}
+
+.card {
+    background-color: #A9CCE3;
+    color: #1B4F72;
+    width: calc(25% - 20px);
+    min-width: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background-color: #5DADE2;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 100%;
+    }
+}
+
+/* === ESTILOS ESPECÍFICOS PARA PRODUCTOS === */
+.products-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.category-title {
+    font-size: 1.8rem;
+    margin: 40px 0 20px;
+    color: #333;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.category-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    height: 3px;
+    background-color: #21618C;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.product-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-info h3 {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.product-info p {
+    color: #666;
+    margin: 0 0 15px;
+    font-size: 0.9rem;
+}
+
+.price {
+    font-weight: bold;
+    color: #21618C;
+    font-size: 1.1rem;
+    margin: 10px 0;
+}
+
+/* === BOTÓN GENERAL === */
+.btn {
+    display: inline-block;
+    background-color: #21618C;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #1A5276;
+}
+
+/* === NOTIFICACIONES === */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #21618C;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.notification.show {
+    opacity: 1;
+}

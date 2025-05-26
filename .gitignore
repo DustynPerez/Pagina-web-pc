@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Firebase y variables de entorno
+.env
+config/serviceAccountKey.json
+*.env

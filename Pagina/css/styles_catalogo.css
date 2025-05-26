@@ -1,0 +1,171 @@
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F5F5DC;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Header (igual que en la página principal) */
+header {
+    background-color: #2E86C1;
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+}
+
+header h1 {
+    font-size: 28px;
+    order: 1;
+}
+
+/* Menú desktop */
+nav.desktop-menu {
+    display: flex;
+    gap: 10px;
+    order: 2;
+}
+
+nav.desktop-menu button {
+    background-color: #85C1E9;
+    color: #1B4F72;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+nav.desktop-menu button:hover {
+    background-color: #21618C;
+    color: white;
+}
+
+/* Carrito */
+.cart-icon {
+    order: 3;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+.cart-count {
+    background-color: #E74C3C;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+/* Menú hamburguesa (solo móvil) */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    order: 4;
+}
+
+/* Mobile menu */
+nav.mobile-menu {
+    display: none;
+    width: 100%;
+    order: 5;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 15px;
+}
+
+nav.mobile-menu button {
+    background-color: #85C1E9;
+    color: #1B4F72;
+    border: none;
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav.desktop-menu {
+        display: none !important;
+    }
+    .hamburger {
+        display: block;
+    }
+    nav.mobile-menu.active {
+        display: flex;
+    }
+}
+
+/* Estilos específicos del catálogo */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.category {
+    width: 100%;
+    margin: 20px 0 10px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 24px;
+    color: #1B4F72;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #85C1E9;
+}
+
+.card {
+    background-color: #A9CCE3;
+    color: #1B4F72;
+    width: calc(25% - 20px);
+    min-width: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background-color: #5DADE2;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 100%;
+    }
+}
