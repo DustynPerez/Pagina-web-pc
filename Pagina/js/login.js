@@ -10,7 +10,7 @@ function iniciarSesion() {
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
       alert("Inicio de sesión exitoso");
-      window.location.href = "inicio.html"; // o cualquier página de inicio
+      window.location.href = "../../index.html"; // o cualquier página de inicio
     })
     .catch((error) => {
       alert("Error al iniciar sesión: " + error.message);
