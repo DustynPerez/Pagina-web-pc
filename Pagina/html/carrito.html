@@ -275,21 +275,20 @@
         // Función para renderizar el carrito
         
         
-        function renderCart() {
-    const cart = getCart();
-    const cartContent = document.getElementById('cart-content');
-    const emptyCartMessage = document.getElementById('empty-cart-message');
-    
-    console.log('Contenido del carrito:', cart); // Verifica en consola
-    
-    if (!cart || cart.length === 0) {
-        cartContent.innerHTML = '';
-        emptyCartMessage.style.display = 'block';
-        return;
-    }
-    
-    emptyCartMessage.style.display = 'none';
-    
+    async function renderCart() {
+    try {
+        const cart = await getCart();
+        const cartContent = document.getElementById('cart-content');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        
+        if (!cart || cart.length === 0) {
+            cartContent.innerHTML = '';
+            emptyCartMessage.style.display = 'block';
+            return;
+        }
+        
+        emptyCartMessage.style.display = 'none';
+
     let itemsHTML = `
         <div class="cart-items">
             <div class="cart-header">
@@ -349,13 +348,18 @@
                 <span>Total:</span>
                 <span>$${total.toFixed(2)}</span>
             </div>
-            <button class="checkout-btn" onclick="checkout()">Proceder al Pago</button>
+    <button class="checkout-btn" onclick="window.location.href='pago.html'">Proceder al Pago</button>
         </div>
     `;
     
     cartContent.innerHTML = itemsHTML;
     updateCartCount();
+                
+    } catch (error) {
+        console.error('Error al cargar el carrito:', error);
+    }
 }
+    
         
         // Menú hamburguesa
         const hamburgerBtn = document.getElementById('hamburgerBtn');

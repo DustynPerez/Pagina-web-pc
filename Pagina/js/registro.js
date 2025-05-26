@@ -16,17 +16,17 @@ function registrarUsuario() {
     return;
   }
 
-  firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
 
-      // Guardar datos adicionales en Firestore
-      return db.collection("usuarios").doc(user.uid).set({
-        nombre: nombre,
-        apellido: apellido,
-        email: email
-      });
-    })
+        // Guardar datos adicionales en Firestore
+        return db.collection("usuarios").doc(user.uid).set({
+          nombre: nombre,
+          apellido: apellido,
+          email: email
+        });
+      })
     .then(() => {
       alert("Registro exitoso");
       window.location.href = "iniciosesion.html"; // redirige al login
