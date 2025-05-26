@@ -1,52 +1,51 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ColorFix - Tienda de ropa con estilo y calidad">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="ColorFix - Tienda de ropa con estilo y calidad" />
     <title>Inicio | ColorFix</title>
-    <link rel="stylesheet" href="../css/styles_inicio.css">
-    <style>
-        /* Estilos para notificaciones */
-        .notification {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #21618C;
-            color: white;
-            padding: 15px 25px;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .notification.show {
-            opacity: 1;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/styles_inicio.css" />
+    <!-- Firebase compatibilidad para scripts tradicionales -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
     <header>
-        <h1>ColorFix</h1>
-        
-        <nav class="desktop-menu">
+        <div class="header-container">
+            <!-- Logo y navegación a la izquierda -->
+            <div class="header-left">
+                <h1>ColorFix</h1>
+                <nav class="desktop-menu">
+                    <button onclick="window.location.href='Inicio.html'">Inicio</button>
+                    <button onclick="window.location.href='productos.html'">Productos</button>
+                    <button onclick="window.location.href='nosotros.html'">Nosotros</button>
+                </nav>
+            </div>
+
+            <!-- Elementos a la derecha -->
+            <div class="header-right">
+                <div class="cart-icon" id="cartIcon">
+                    🛒 <span class="cart-count" id="cartCount">0</span>
+                </div>
+
+                <div id="user-menu-container" class="user-menu-container">
+                    <img src="../img/perfil.jpg" id="profile-icon" alt="Perfil" class="profile-icon" />
+                    <div id="user-dropdown" class="user-dropdown hidden">
+                        <!-- Contenido dinámico se insertará aquí -->
+                    </div>
+                </div>
+
+                <button class="hamburger" id="hamburgerBtn">☰</button>
+            </div>
+        </div>
+
+        <nav class="mobile-menu" id="mobileMenu">
             <button onclick="window.location.href='Inicio.html'">Inicio</button>
             <button onclick="window.location.href='productos.html'">Productos</button>
             <button onclick="window.location.href='nosotros.html'">Nosotros</button>
-        </nav>
-        
-        <div class="cart-icon" id="cartIcon">
-            🛒 <span class="cart-count" id="cartCount">0</span>
-        </div>
-        
-        <button class="hamburger" id="hamburgerBtn">☰</button>
-        
-        <nav class="mobile-menu" id="mobileMenu">
-            <button>Inicio</button>
-            <button>Productos</button>
-            <button>Nosotros</button>
         </nav>
     </header>
 
@@ -214,5 +213,7 @@
             updateCartCount();
         });
     </script>
-</body>
+    <script src="../js/cart.js"></script>
+    <script src="../js/perfil.js" defer></script>
+    <script src="../js/configuracion.js"></script></body>
 </html>

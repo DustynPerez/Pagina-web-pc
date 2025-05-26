@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Pago | ColorFix</title>
+    <link rel="stylesheet" href="../css/styles_inicio.css">
+    <!-- Firebase compatibilidad para scripts tradicionales -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .confirmation-box {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .confirmation-box h1 {
+            color: #21618C;
+            margin-bottom: 20px;
+        }
+
+        .confirmation-box p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .confirmation-box a {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background-color: #21618C;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .confirmation-box a:hover {
+            background-color: #1A5276;
+        }
+    </style>
+</head>
+<body>
+    <header> 
+            <div class="header-container"> 
+                <!-- Logo y navegación a la izquierda --> 
+                    <div class="header-left"> 
+                    <h1>ColorFix</h1> 
+                    <nav class="desktop-menu"> 
+                    <button onclick="window.location.href='Inicio.html'">Inicio</button> 
+                    <button onclick="window.location.href='productos.html'">Productos</button> 
+                    <button onclick="window.location.href='nosotros.html'">Nosotros</button> 
+                </nav> 
+            </div> 
+            <!-- Elementos a la derecha --> 
+                <div class="header-right"> 
+                <div class="cart-icon" id="cartIcon"> 🛒 <span class="cart-count" id="cartCount">0</span> 
+                </div> <div id="user-menu-container" class="user-menu-container"> 
+                <img src="../img/perfil.jpg" id="profile-icon" alt="Perfil" class="profile-icon" /> 
+                <div id="user-dropdown" class="user-dropdown hidden">
+                    <!-- Contenido dinámico se insertará aquí --> </div> 
+                    
+                </div> 
+                
+                <button class="hamburger" id="hamburgerBtn">☰</button> 
+            </div> 
+        </div> 
+        <nav class="mobile-menu" id="mobileMenu"> 
+            <button onclick="window.location.href='Inicio.html'">Inicio</button> 
+            <button onclick="window.location.href='productos.html'">Productos</button> 
+            <button onclick="window.location.href='nosotros.html'">Nosotros</button> 
+        </nav>         
+        </div> 
+        <button class="hamburger" id="hamburgerBtn">☰</button> 
+        <nav class="mobile-menu" id="mobileMenu"> 
+            <button>Inicio</button> <button>Productos</button> 
+            <button>Nosotros</button> 
+        </nav>         
+    </header> 
+    <div class="confirmation-box">
+        <h1>¡Gracias por tu compra!</h1>
+        <p>Tu pedido ha sido procesado correctamente. Te llegará un correo con los detalles de la compra.</p>
+        <a href="productos.html">Volver a Comprar</a>
+    </div>
+    
+</body>
+<script src="../js/perfil.js" defer></script>
+<script src="../js/configuracion.js"></script></body>
+</html>

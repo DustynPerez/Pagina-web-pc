@@ -6,6 +6,11 @@
     <meta name="description" content="ColorFix - Catálogo de productos de moda">
     <title>ColorFix - Productos</title>
     <link rel="stylesheet" href="../css/styles_inicio.css">
+    <!-- Firebase compatibilidad para scripts tradicionales -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
     <style>
         /* === ESTILOS ESPECÍFICOS PARA PRODUCTOS === */
         .products-container {
@@ -119,27 +124,42 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>ColorFix</h1>
-        
-        <nav class="desktop-menu">
-            <button onclick="window.location.href='Inicio.html'">Inicio</button>
-            <button onclick="window.location.href='productos.html'" style="background-color: #21618C; color: white;">Productos</button>
-            <button onclick="window.location.href='nosotros.html'">Nosotros</button>
-        </nav>
-        
-        <div class="cart-icon" id="cartIcon">
-            🛒 <span class="cart-count" id="cartCount">0</span>
-        </div>
-        
-        <button class="hamburger" id="hamburgerBtn">☰</button>
-        
-        <nav class="mobile-menu" id="mobileMenu">
-            <button onclick="window.location.href='index.html'">Inicio</button>
-            <button onclick="window.location.href='productos.html'" style="background-color: #21618C; color: white;">Productos</button>
-            <button onclick="window.location.href='nosotros.html'">Nosotros</button>
-        </nav>
-    </header>
+    <header> 
+            <div class="header-container"> 
+                <!-- Logo y navegación a la izquierda --> 
+                    <div class="header-left"> 
+                    <h1>ColorFix</h1> 
+                    <nav class="desktop-menu"> 
+                    <button onclick="window.location.href='Inicio.html'">Inicio</button> 
+                    <button onclick="window.location.href='productos.html'">Productos</button> 
+                    <button onclick="window.location.href='nosotros.html'">Nosotros</button> 
+                </nav> 
+            </div> 
+            <!-- Elementos a la derecha --> 
+                <div class="header-right"> 
+                <div class="cart-icon" id="cartIcon"> 🛒 <span class="cart-count" id="cartCount">0</span> 
+                </div> <div id="user-menu-container" class="user-menu-container"> 
+                <img src="../img/perfil.jpg" id="profile-icon" alt="Perfil" class="profile-icon" /> 
+                <div id="user-dropdown" class="user-dropdown hidden">
+                    <!-- Contenido dinámico se insertará aquí --> </div> 
+                    
+                </div> 
+                
+                <button class="hamburger" id="hamburgerBtn">☰</button> 
+            </div> 
+        </div> 
+        <nav class="mobile-menu" id="mobileMenu"> 
+            <button onclick="window.location.href='Inicio.html'">Inicio</button> 
+            <button onclick="window.location.href='productos.html'">Productos</button> 
+            <button onclick="window.location.href='nosotros.html'">Nosotros</button> 
+        </nav>         
+        </div> 
+        <button class="hamburger" id="hamburgerBtn">☰</button> 
+        <nav class="mobile-menu" id="mobileMenu"> 
+            <button>Inicio</button> <button>Productos</button> 
+            <button>Nosotros</button> 
+        </nav>         
+    </header> 
 
     <section class="hero">
         <div class="hero-content">
@@ -374,5 +394,7 @@
             updateCartCount();
         });
     </script>
+    <script src="../js/perfil.js" defer></script>
+    <script src="../js/configuracion.js"></script></body>
 </body>
 </html>
