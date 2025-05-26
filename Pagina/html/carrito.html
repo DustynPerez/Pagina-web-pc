@@ -348,7 +348,7 @@
                 <span>Total:</span>
                 <span>$${total.toFixed(2)}</span>
             </div>
-    <button class="checkout-btn" onclick="window.location.href='pago.html'">Proceder al Pago</button>
+<button class="checkout-btn" onclick="verificarInicioSesion()">Proceder al Pago</button>
         </div>
     `;
     
@@ -398,6 +398,21 @@
         blockHeadless: true,
         });
     </script>
+    <script>
+function verificarInicioSesion() {
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            // Usuario autenticado, permitir acceso a la página de pago
+            window.location.href = 'pago.html';
+        } else {
+            // Usuario no autenticado, redirigir al login
+            alert('Debes iniciar sesión para continuar con el pago.');
+            window.location.href = 'iniciosesion.html'; // O la página de login que uses
+        }
+    });
+}
+</script>
+
 
     <!-- Firebase compatibilidad para scripts tradicionales --> 
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script> 
